@@ -20,8 +20,8 @@
     "sha256": "4ccf4a4b833ad456d8ed80157458f688bd54be98ba810e5bcb2cc59d357fed19"
   },
   "artifacts/IRIS_arxiv_source.zip": {
-    "bytes": 330284,
-    "sha256": "d2401f1bd3c3f833945671f7c8fef40a634f2615f7237024d3586cfa1f925bbe"
+    "bytes": 312758,
+    "sha256": "5335e186f1a2ab1044aabb6a2077af3f747f6a85ea0577367a1af4835032bfda"
   },
   "baselines/__init__.py": {
     "bytes": 1273,
@@ -392,8 +392,8 @@
     "sha256": "1ef954cea4f59e52d67d50cf10375635feade12b06f7eefaf6ff9ce39529ac2c"
   },
   "paper/README.md": {
-    "bytes": 337,
-    "sha256": "76b90e6baf581b898c12df4d6023a5d8d42c4f40e26bc96a51471022f295eadc"
+    "bytes": 671,
+    "sha256": "fb366c4d45f195e42aff58cf2ebf48076fa77578e276d6bd12faec2b50d1db60"
   },
   "README.md": {
     "bytes": 10331,
