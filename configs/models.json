@@ -1,0 +1,65 @@
+{
+  "deepseek-v3.2": {
+    "model": {
+      "model_name_or_path": "deepseek/deepseek-v3.2",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "qwen3-max": {
+    "model": {
+      "model_name_or_path": "qwen/qwen3-max",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "gpt-4o-2024-11-20": {
+    "model": {
+      "model_name_or_path": "openai/gpt-4o-2024-11-20",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "mistral-large-2512": {
+    "model": {
+      "model_name_or_path": "mistralai/mistral-large-2512",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "claude-sonnet-4.5": {
+    "model": {
+      "model_name_or_path": "anthropic/claude-sonnet-4.5",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "claude-opus-4.5": {
+    "model": {
+      "model_name_or_path": "anthropic/claude-opus-4.5",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "gemini_3_flash_preview": {
+    "model": {
+      "model_name_or_path": "google/gemini-3-flash-preview",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "grok-4.20": {
+    "model": {
+      "model_name_or_path": "x-ai/grok-4.20",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  },
+  "kimi-k2-thinking": {
+    "model": {
+      "model_name_or_path": "moonshotai/kimi-k2-thinking",
+      "token": "<USE_ENVIRONMENT>"
+    },
+    "model_type": "closed_source"
+  }
+}

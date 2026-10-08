@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying paper when using these materials."
+type: software
+title: "IRIS: Intent Recovery in LLM Safety Evaluation"
+authors:
+  - family-names: Jiang
+    given-names: Haitong
+  - family-names: Liu
+    given-names: Chunlin
+  - family-names: Tang
+    given-names: Sihan
+  - family-names: Wu
+    given-names: Chan
+  - family-names: Su
+    given-names: Xiaoqing
+  - family-names: Feng
+    given-names: Yuhong
+    email: yuhongf@szu.edu.cn
+repository-code: "https://github.com/kevinjiang0121-cyber/IRIS"

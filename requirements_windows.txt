@@ -1,0 +1,34 @@
+# Core runtime
+torch
+torchvision
+transformers
+accelerate
+spacy==3.7.2
+pandas
+datasketch
+numpy
+tqdm
+pyyaml
+pillow
+huggingface_hub
+
+# API backends
+openai>=1.25.1
+google-generativeai
+boto3
+
+# utilities / analysis
+tenacity
+
+# pipeline / baseline runtime
+ray
+fschat
+
+# Notes:
+# - vllm is Linux/WSL only and not supported on Windows.
+# - vllm is imported by some scripts but intentionally excluded here due to Windows incompatibility.
+
+scipy
+
+deep-translator
+art

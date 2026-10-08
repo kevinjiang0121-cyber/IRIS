@@ -1,0 +1,10 @@
+# LowResourceLang full105 override
+default_method_hyperparameters:
+  target_language: yoruba
+  translations_path: ./data/full105/low_resource_translations_yoruba.json
+  decode_hint: false
+
+yoruba:
+  target_language: yoruba
+  translations_path: ./data/full105/low_resource_translations_yoruba.json
+  decode_hint: false

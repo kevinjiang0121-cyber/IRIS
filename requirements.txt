@@ -1,0 +1,33 @@
+# Core runtime
+torch
+torchvision
+transformers
+accelerate
+spacy==3.7.2
+pandas
+datasketch
+numpy
+tqdm
+pyyaml
+pillow
+huggingface_hub
+
+# Optional: local inference backend (Linux/WSL only)
+vllm>=0.3.0
+
+# Optional: API backends
+openai>=1.25.1
+google-generativeai
+boto3
+
+# Optional: distributed / serving
+ray
+fschat
+
+# Optional: utilities / analysis
+tenacity
+
+scipy
+
+deep-translator
+art

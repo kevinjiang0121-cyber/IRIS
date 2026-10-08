@@ -1,0 +1,9 @@
+# FormalLogic full105 experiment override
+# Main experiment uses the original 96 script-generated reformulations plus
+# 9 manually backfilled blocked cases; see data/full105/formal_logic_backfill_notes.md.
+
+default_method_hyperparameters:
+  translations_path: ./data/full105/formal_logic_translations_merged.json
+
+default:
+  translations_path: ./data/full105/formal_logic_translations_merged.json

@@ -1,0 +1,23 @@
+# LowResourceLang method config
+# Reference: yong2023low (Low-Resource Languages Jailbreak GPT-4)
+# Translator: Google Translate via deep_translator (matches yong2023low setup,
+#   removes LLM-translator alignment refusal as a confound).
+# Target language picks per wang2025 (Refusal Direction is Universal): Zulu
+#   and Yoruba report the highest cross-lingual ASR signal.
+
+default_method_hyperparameters:
+  target_language: zulu
+  decode_hint: false  # yong2023low default: zero-shot, no decode hint
+
+# Experiment presets — selectable via --experiment_name
+default:
+  target_language: zulu
+  decode_hint: false
+
+zulu:
+  target_language: zulu
+  decode_hint: false
+
+yoruba:
+  target_language: yoruba
+  decode_hint: false
