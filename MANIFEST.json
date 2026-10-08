@@ -1,4 +1,8 @@
 {
+  ".gitattributes": {
+    "bytes": 9,
+    "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992"
+  },
   ".gitignore": {
     "bytes": 87,
     "sha256": "f3936e1d90b54094e4cf2e5922553c720bc469f616b6273d1000d2ff36046ffb"
