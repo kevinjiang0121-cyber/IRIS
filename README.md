@@ -4,7 +4,7 @@ Code and data for **Same Outcome, Different Evidence: Intent Recovery in LLM Saf
 
 **Haitong Jiang, Chunlin Liu, Sihan Tang, Chan Wu, Xiaoqing Su, Yuhong Feng**
 
-Shenzhen University; Sihan Tang: Harbin Institute of Technology.
+Shenzhen University; Sihan Tang: School of Intelligence Science and Engineering, Harbin Institute of Technology (Shenzhen), Shenzhen, China.
 Corresponding author: Yuhong Feng (yuhongf@szu.edu.cn).
 
 IRIS reports operative task recovery (UR) alongside attack success rate (ASR) to study how similar outcomes can reflect different levels of task engagement. The evaluation uses 105 matched behaviors and six target models across language, encoding, and reconstruction conditions.
