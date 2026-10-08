@@ -1,0 +1,46 @@
+\section{Reliability and Reader Sensitivity}
+\subsection{Headline-Metric Agreement}
+\label{app:iaa-tier-sensitivity}
+
+\input{figures/reliability/iaa}
+\input{figures/reliability/paired_reading}
+Table~\ref{tab:iaa-kappa} reports Cohen's $\kappa$ and raw agreement for operative UR and ASR on independent A1/A2 DR-TOK annotations ($n=105$ matched items per model). Each reader's UR indicator uses that reader's joint IR/IS labels before adjudication. Operative-UR agreement is 74.3\%--81.9\%, with $\kappa=0.29$--$0.63$; ASR agreement is 82.9\%--97.1\%, with $\kappa=0.33$--$0.66$. Shared negatives contribute to raw agreement: Qwen3-Max has 80.0\% agreement despite reader-specific UR of 24.8\% and 6.7\% (Table~\ref{tab:operative-reading}).
+
+Agreement varies across models. Differences in task interpretation, frame assignment, and annotation error all contribute to the observed disagreement, with their relative contributions unresolved. Independent double annotation covers DR-TOK; reliability for T1--T3 and the other interfaces remains to be established.
+
+
+
+\subsection{Paired-Reading Sensitivity}
+\label{app:paired-cases}
+
+
+\paragraph{Operative-recovery endpoints.}
+Table~\ref{tab:operative-reading} reports item-level intersection and union of the two readers' binary labels. The strict recovery endpoint requires both readers to satisfy $\mathrm{IR}=2\land\mathrm{IS}=\mathrm{NA}$; the permissive endpoint requires either reader to satisfy the complete event. Each joint event is evaluated within a reader. The resulting range measures variation between the two readings; sampling uncertainty and adjudication are separate analyses.
+
+For Gemini and Qwen, judge UR (72.4\% and 41.0\%) exceeds the permissive human endpoint (56.2\% and 25.7\%). GPT-4o has human endpoints of 7.6--26.7\%, indicating low operative recovery under TOK. The corresponding Caesar condition lacks this independent human comparison. These results show that the estimated recovery rates depend materially on the reader.
+
+
+
+
+\subsection{Recognition Diagnostic: Judge Sensitivity}
+The judge-sensitivity audit selects 293 DR-TOK outputs assigned IR=2, IS=M by Mistral v2.2. Both human readers assigned IR=2 to 39/293 (13.3\%). Table~\ref{tab:judge-sensitivity} reports recognition retention under alternative judges and prompts, conditional on selection by Mistral. Canonical operative UR is zero throughout this IS=M cohort.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lr}
+\toprule
+Judge / policy & IR=2 retained (\%) \\
+\midrule
+Grok 4.20 / v2.2 & 78.5 \\
+Kimi K2 / v2.2 & 75.4 \\
+Mistral / v2.5 & 72.4 \\
+Gemini Flash / v2.5 & 57.7 \\
+Three-judge unanimity / v2.2 & 64.2 \\
+A1/A2 intersection & 13.3 \\
+\bottomrule
+\end{tabular}
+\caption{Recognition retention on a Mistral-selected cohort ($n=293$). Unanimity uses Mistral, Grok, and Kimi; the human endpoint is the intersection of independent readings before adjudication.}
+\label{tab:judge-sensitivity}
+\end{table}
+
+The v2.5 patch strengthens target grounding and removes TOK-specific recognition encouragement, changing recognition, response-frame, and SO routing together. Gemini Flash judges 26 of its own outputs; excluding these leaves approximately 57\% retention. Kimi's reasoning budget was capped at 1,024 tokens. The main results use the frozen v2.2 labels. Extended judge notes specify the prompt changes and sample selection.

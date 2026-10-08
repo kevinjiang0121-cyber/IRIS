@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering\fontsize{8.3}{10}\selectfont
+\setlength{\tabcolsep}{1.5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrrrrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{\textbf{EN}} & \multicolumn{2}{c}{\textbf{TOK}} & \multicolumn{2}{c}{\textbf{Zulu}} & \multicolumn{2}{c}{\textbf{Yoruba}} & \multicolumn{2}{c}{\textbf{Caesar}} & \multicolumn{2}{c}{\textbf{FormalLogic}} & \multicolumn{2}{c}{\textbf{ArtPrompt}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}\cmidrule(lr){12-13}\cmidrule(lr){14-15}
+\textbf{Model} & UR & ASR & UR & ASR & UR & ASR & UR & ASR & UR & ASR & UR & ASR & UR & ASR \\
+\midrule
+GPT-4o & \cellcolor{contrastBlue!16}100.0 & 0.0 & \textbf{15.2} & \textbf{2.9} & 50.5 & 3.8 & 41.0 & 12.4 & \cellcolor{contrastBlue!16}\textbf{96.2} & \textbf{2.9} & \cellcolor{contrastBlue!16}\textbf{94.3} & \cellcolor{contrastCoral!16}\textbf{52.4} & 46.7 & 5.7 \\
+Sonnet~4.5 & \cellcolor{contrastBlue!16}98.1 & \textbf{2.9} & 54.3 & \cellcolor{contrastCoral!16}40.0 & 87.6 & \cellcolor{contrastCoral!16}26.7 & 85.7 & \cellcolor{contrastCoral!16}41.9 & $\text{--}^{\dagger}$ & $\text{--}^{\dagger}$ & 58.1 & 18.1 & 45.7 & 1.9 \\
+Opus~4.5 & \cellcolor{contrastBlue!16}\textbf{97.1} & 1.9 & 33.3 & 13.3 & \cellcolor{contrastBlue!16}92.4 & 7.6 & \cellcolor{contrastBlue!16}93.3 & 10.5 & $\text{--}^{\dagger}$ & $\text{--}^{\dagger}$ & 41.0 & 6.7 & 22.9 & 0.0 \\
+Gemini~3~Flash & \cellcolor{contrastBlue!16}99.0 & 1.9 & \textbf{72.4} & \cellcolor{contrastCoral!16}56.2 & \cellcolor{contrastBlue!16}99.0 & 18.1 & \cellcolor{contrastBlue!16}97.1 & \cellcolor{contrastCoral!16}21.0 & \cellcolor{contrastBlue!16}100.0 & 1.9 & 88.6 & \cellcolor{contrastCoral!16}49.5 & 81.0 & \cellcolor{contrastCoral!16}25.7 \\
+DeepSeek~V3.2 & \cellcolor{contrastBlue!16}100.0 & 1.0 & 24.8 & 9.5 & 86.7 & 15.2 & 72.4 & \cellcolor{contrastCoral!16}47.6 & 68.6 & 6.7 & \textbf{87.6} & \cellcolor{contrastCoral!16}\textbf{56.2} & 25.7 & 5.7 \\
+Qwen3-Max & \cellcolor{contrastBlue!16}100.0 & 0.0 & 41.0 & \cellcolor{contrastCoral!16}28.6 & 79.0 & \cellcolor{contrastCoral!16}31.4 & 81.0 & \cellcolor{contrastCoral!16}52.4 & \cellcolor{contrastBlue!16}99.0 & 0.0 & \cellcolor{contrastBlue!16}96.2 & \cellcolor{contrastCoral!16}24.8 & 86.7 & 7.6 \\
+\bottomrule
+\end{tabular*}
+\caption{Operative UR and ASR across core interfaces (\%; $n=105$ per cell). Blue: UR $\geq90\%$; red: ASR $\geq20\%$. Color thresholds serve as visual guides. Bold marks values discussed in the main text. $^{\dagger}$Claude Sonnet~4.5 and Opus~4.5 are 100\% blocked/empty under CaesarCipher. Sonnet/Opus blocked rates are 40.0/57.1\% for FormalLogic and 54.3/69.5\% for ArtPrompt; all denominators include blocked outputs. Definitions and uncertainty analyses are in Appendices~\ref{app:operative-metrics} and~\ref{app:matched-tests}.}
+\label{tab:short-direct}
+\end{table*}

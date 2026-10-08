@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+
+\usepackage[preprint]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{microtype}
+
+\usepackage{inconsolata}
+
+
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xurl}
+\usepackage{listings}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\definecolor{contrastCoral}{HTML}{EE6677}
+\definecolor{contrastBlue}{HTML}{4477AA}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand{\IRR}{\ensuremath{R_{\mathrm{IR}}}}
+
+\lstdefinestyle{irisjudge}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=false,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2,
+  linewidth=\columnwidth,
+  xleftmargin=0pt,
+  aboveskip=0.4\baselineskip,
+  belowskip=0.4\baselineskip
+}
+
+\lstdefinestyle{irisjudgecompact}{
+  style=irisjudge,
+  basicstyle=\ttfamily\footnotesize
+}
+
+
+
+
+
+\title{Same Outcome, Different Evidence: 
+\\ Intent Recovery in LLM Safety Evaluation}
+
+
+
+\author{Haitong Jiang$^{1}$ \quad Chunlin Liu$^{1}$ \quad Sihan Tang$^{2}$ \\
+\textbf{Chan Wu$^{1}$ \quad Xiaoqing Su$^{1}$ \quad Yuhong Feng$^{1*}$} \\
+$^{1}$College of Computer Science and Software Engineering, Shenzhen University \\
+$^{2}$Harbin Institute of Technology \\
+{\normalfont\small $^{*}$Corresponding author: \texttt{yuhongf@szu.edu.cn}}}
+\hypersetup{pdfauthor={Haitong Jiang, Chunlin Liu, Sihan Tang, Chan Wu, Xiaoqing Su, Yuhong Feng},
+pdftitle={Same Outcome, Different Evidence: Intent Recovery in LLM Safety Evaluation}}
+
+\begin{document}
+\maketitle
+\flushbottom
+\begin{abstract}
+Safety evaluations of large language models commonly summarize harmful-output behavior with attack success rate (ASR). Yet the same non-harmful outcome can arise for very different reasons. A model may recover a harmful task and refuse it, fail to recover the task, or respond to something else entirely. Distinguishing these cases becomes especially important under intent-obscuring prompts, where a low ASR does not reveal whether the evaluated task was actually engaged. To make this distinction explicit, we pair ASR with \emph{operative understanding rate} (UR), which measures whether a response both identifies the evaluated task and treats it as the task to be answered. Across interfaces, this paired view reveals substantial variation hidden by ASR: similar ASR values can correspond to sharply different recovery rates. Controlled English reconstructions show that recovery consistently improves as compressed prompts become more explicit, whereas ASR does not follow the same pattern. A complementary contrast comes from FormalLogic, where high recovery can still coincide with frequent harmful assistance. Together, these results show that non-harmful outcomes are not equally informative about model safety, motivating the joint reporting of intent recovery and ASR in LLM safety evaluation.
+Code and experiment inputs are publicly available.\footnote{\url{https://github.com/kevinjiang0121-cyber/IRIS}}
+\end{abstract}
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/iris_attribution.pdf}
+\caption{\textsc{IRIS} overview. Under intent-obscuring prompts, non-harmful outcomes can reflect distinct response states. \textsc{IRIS} checks target-intent identification and retention of the target task as the response frame, then reports operative UR alongside unconditional ASR.}
+\label{fig:iris-overview}
+\end{figure*}
+
+\section{Introduction}
+\label{sec:intro}
+
+Not all jailbreak attacks expose their harmful intent directly. Recent work instead obscures the underlying task through low-resource languages, ciphers, ASCII art, formal representations, and other indirect interfaces~\citep{yong2023low,ICLR2024_6b396f76,yuan2024cipherchat,jiang2024artprompt,peng2025logic}. These transformations can affect more than the downstream safety decision. ArtPrompt builds on models' difficulty recognizing ASCII-art prompts~\citep{jiang2024artprompt}; low-resource-language attacks report substantial fractions of unclear responses for some languages~\citep{yong2023low}; and StrongREJECT shows that jailbreaks bypassing safety fine-tuning can also reduce model capability, causing existing evaluations to overstate jailbreak effectiveness~\citep{souly2024strongreject}. Together, these findings suggest that safety outcomes under intent-obscuring attacks can depend not only on how a model responds to a harmful task, but also on whether it successfully recovers and engages with that task in the first place.
+
+This distinction creates a measurement problem for safety evaluation. Benchmarks such as HarmBench, JailbreakBench, StrongREJECT, and SORRY-Bench systematically measure harmful outputs and refusals~\citep{pmlr-v235-mazeika24a,chao2024jailbreakbench,souly2024strongreject,xie2025sorrybench}, but ASR alone does not reveal why an output is non-harmful. Under an intent-obscuring interface, a model may recover the harmful task and refuse it, fail to recover the task, or respond to something else entirely. Notably, defenses based on backtranslation and explicit intention analysis already separate intent recovery from the subsequent safety response~\citep{wang-etal-2024-defending,zhang-etal-2025-intention}. We argue that evaluation should make the same distinction. We refer to the implicit requirement that the evaluated task be recovered before its outcome is interpreted as post-recovery safety behavior as the \emph{recoverability assumption}.
+
+To resolve this ambiguity, we report \emph{operative understanding rate} (UR) alongside ASR. UR measures whether a response both identifies the evaluated task and treats it as the task being answered. It is not an alternative safety score, but an attribution signal for interpreting the observed outcome. This recovery-side view complements response-side decompositions of harmful assistance~\citep{chu2025jades} by asking whether the model was responding to the evaluated task in the first place. The distinction is visible even when ASR is unchanged: for GPT-4o, Toki Pona and CaesarCipher yield the same ASR but sharply different levels of operative recovery (Table~\ref{tab:short-direct}).
+
+We study this distinction using Toki Pona~\citep{lang2014tokipona} as a semantic-compression stress test and matched harmful behaviors across several intent-obscuring interfaces. We also construct progressively more explicit English reconstructions of the same compressed prompts to trace how recovery changes as ambiguity is resolved. Complementary interfaces, including ciphers and formal representations, then test whether similar ASR can reflect different recovery states and whether successful recovery can still coincide with harmful assistance.
+
+Our contributions are threefold:
+\begin{itemize}[leftmargin=*,topsep=2pt,itemsep=1pt]
+    \item \textbf{Measurement contribution.} We identify the recoverability assumption behind ASR interpretation under intent-obscuring prompts and introduce operative recovery as an intermediate signal for attributing non-harmful outcomes.
+    \item \textbf{Empirical finding.} Controlled reconstructions and cross-interface contrasts show that recovery and harmful-output rates can vary separately: similar ASR can conceal sharply different task engagement, while high recovery can still coexist with frequent harmful assistance.
+    \item \textbf{Resource contribution.} We provide a human-reviewed, auditable evaluation resource and reproducible pipeline covering matched behaviors, recovery annotations, reconstruction controls, and cross-interface safety measurements.
+\end{itemize}
+
+\input{figures/core_table}
+
+\section{Recovery-Conditioned Safety Evaluation}
+\label{sec:method}
+
+We refer to our recovery-conditioned reporting protocol as \textsc{IRIS} (\emph{Intent Recovery as an Intermediate Signal}). It pairs attack success rate (ASR) with \emph{operative understanding rate} (UR), which measures whether the evaluated harmful task is recovered as the task being answered:
+\[
+\begin{aligned}
+\mathrm{UR}&=P(\text{operative task recovered}),\\
+\mathrm{ASR}&=P(\text{harmful assistance}).
+\end{aligned}
+\]
+
+Operative recovery requires more than recognizing the harmful intent: the model must also treat the evaluated task as the task it is answering. Task-aware refusals and safe alternatives satisfy this criterion, whereas translation, linguistic analysis, and responses to a different task do not. Our annotation scheme separately records task recognition, response framing, harmful assistance, and blocked outputs; Appendix~\ref{app:operative-metrics} provides the full definitions.
+
+UR and ASR are therefore complementary rather than interchangeable. A low ASR is most informative when UR is high, because the model has usually engaged with the evaluated task before withholding harmful assistance. When both UR and ASR are low, the same outcome is harder to attribute to task-aware safety, since many responses may never have engaged with the target task. Conversely, high UR with high ASR indicates that harmful assistance persists after successful recovery. Blocked or empty outputs are included in both denominators and reported separately.
+
+
+
+\section{Empirical Evidence}
+\label{sec:experiments}
+
+\paragraph{Setup.}
+We evaluate 105 harmful tasks adapted from HarmBench, StrongREJECT, and JailbreakBench~\citep{pmlr-v235-mazeika24a,souly2024strongreject,chao2024jailbreakbench}. The source pools were manually deduplicated and filtered for cross-interface comparability, retaining behaviors whose harmful task remained meaningful after translation or reformulation while excluding cases that depended heavily on specialized names, terminology, or unstable harmfulness boundaries.
+
+We evaluate GPT-4o, Claude Sonnet~4.5, Claude Opus~4.5, Gemini~3 Flash, DeepSeek~V3.2, and Qwen3-Max. English direct requests provide the explicit baseline, while Toki Pona serves as the primary semantic-compression stress test. Toki Pona construction and review were led by a researcher with more than one year of active experience using the language, with additional annotators receiving at least one month of structured training; full procedures and annotator qualifications are given in Appendices~\ref{app:design} and~\ref{app:annotation_manual}. We further construct three increasingly explicit English reconstructions (T1--T3) from the same compressed prompts and evaluate CaesarCipher~\citep{yuan2024cipherchat}, FormalLogic~\citep{peng2025logic}, Zulu, Yoruba, and ArtPrompt~\citep{jiang2024artprompt}. Each model--condition cell contains the same 105 behaviors.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[height=1.75in]{figures/stage2_recovery.pdf}
+\caption{Recovery and harmful assistance across reconstructions and interfaces. (a--b) T1--T3 trajectories: operative UR rises for all six models, while ASR varies. (c) Operative UR versus ASR for EN ($\circ$), TOK ($\square$), Caesar ($\triangle$), and FormalLogic ($\diamond$). The dashed line connects GPT-4o TOK and Caesar: both have 2.9\% ASR, with 15.2\% and 96.2\% UR. All-blocked Caesar cells are omitted as in Table~\ref{tab:short-direct}. Colors identify models throughout; marker shapes in (a--b) also identify models. Appendix~\ref{app:matched-tests} reports intervals and paired tests.}
+\label{fig:stage2-recovery}
+\end{figure*}
+
+\subsection{Same Non-Harmful Outcome, Different Evidence}
+\label{sec:direct}
+
+English serves as the explicit baseline: operative UR is at least 97.1\% across all six models, while ASR stays below 3\% (Table~\ref{tab:short-direct}). Because the target task is almost always recovered, low ASR here largely reflects post-recovery safety behavior rather than failed task recovery.
+
+Under Toki Pona, this interpretation becomes much less stable. Operative UR drops sharply across models, while ASR varies without following recovery in a consistent direction. GPT-4o provides the clearest example: UR is 15.2\% while ASR is only 2.9\%. More generally, similar ASR values can occur at very different levels of recovery, changing how much of the observed outcome can be attributed to post-recovery safety behavior.
+
+The attribution gap becomes especially clear when comparing interfaces. For GPT-4o, Toki Pona and CaesarCipher yield the same 2.9\% ASR, yet operative UR differs sharply, from 15.2\% to 96.2\% (Table~\ref{tab:short-direct}; Figure~\ref{fig:stage2-recovery}c). The two conditions therefore appear equivalent under ASR alone despite very different levels of engagement with the target task. This contrast motivates treating recovery as complementary information for interpreting ASR.
+
+\subsection{Resolving Ambiguity Changes Recovery}
+\label{sec:reconstruction}
+
+We next test whether recovery changes as the same compressed content becomes easier to interpret. Starting from the Toki-Pona-derived semantic cores, we construct three English versions with increasing explicitness: T1 preserves most of the original underspecification, T2 makes supported semantic roles explicit, and T3 resolves the supported pragmatic relation into a natural request. Each reconstruction is constrained to the observed semantic core, without introducing unsupported source details or stronger attack content (Appendix~\ref{app:stage2_protocol}).
+
+Figure~\ref{fig:stage2-recovery}a--b shows a consistent effect on recovery but not on downstream safety behavior. Operative UR increases from T1 to T3 for every model, and matched T1--T3 tests confirm significant gains across all six models (Appendix~\ref{app:matched-tests}). The endpoint gains are substantial, ranging from 15.2 to 41.0 percentage points across models, with all six comparisons remaining significant after Holm correction. Because T1--T3 retain the same underlying semantic cores and scoring policy, this controlled progression strengthens the interpretation that recovery is sensitive to how explicitly the task is expressed. ASR, however, follows model-dependent trajectories rather than a common direction. Making the task easier to recover therefore consistently increases task engagement, while changes in harmful assistance vary across models.
+
+\subsection{Recovery--Safety Profiles across Interfaces}
+\label{sec:boundary}
+
+The relationship between recovery and harmful assistance varies substantially across interfaces (Table~\ref{tab:short-direct}; Figure~\ref{fig:stage2-recovery}c). FormalLogic provides the clearest high-recovery/high-harm profile: several models reliably recover the evaluated task while still producing harmful assistance at substantial rates. CaesarCipher, by contrast, generally combines high recovery with low ASR among non-blocked models. Successful recovery is therefore compatible with both safe and unsafe downstream behavior.
+
+Other interfaces broaden this picture rather than forming a single common pattern. Zulu and Yoruba produce mixed recovery--ASR profiles across models, while ArtPrompt combines variable recovery with substantial provider blocking for some systems. Intent-obscuring interfaces can therefore affect task recovery, downstream safety behavior, and process-level availability in different combinations. Appendix~\ref{app:cross-substrate-full} reports the corresponding response-frame and blocked-output breakdowns.
+
+Across these conditions, operative UR contextualizes ASR rather than replacing it: recovery identifies whether the evaluated task was actually engaged, while ASR measures harmful assistance across all evaluated responses.
+
+\section{Discussion and Conclusion}
+\label{sec:discussion}
+
+Non-harmful outputs do not all provide the same evidence about model safety. When an evaluation uses intent-obscuring transformations that impose a substantial recovery burden, low ASR may reflect task-aware refusal, failed recovery, a shift to another task, or process-level blocking. Our results show that recovery can vary substantially without a corresponding change in ASR, while successful recovery can still coexist with harmful assistance. In these settings, intent recovery helps distinguish whether the observed outcome reflects post-recovery safety behavior or failure to engage with the evaluated task in the first place.
+
+When safety evaluation relies on intent-obscuring transformations that place a substantial recovery burden on the model, we recommend reporting operative UR alongside ASR, with blocked outputs reported separately. In such settings, UR provides a reference for whether the evaluated task was actually engaged before the safety outcome is interpreted. It should not be treated as a safety score or a direct measure of internal understanding: operative UR remains response-based and reader-dependent, and independent human readings and judge-sensitivity analyses quantify this uncertainty (Appendices~\ref{app:iaa-tier-sensitivity} and~\ref{app:paired-cases}). The central implication is simple: the same observed ASR can carry different evidential weight depending on whether the underlying task was successfully recovered.
+
+
+\section*{Limitations}
+The 105-item panel was curated for cross-interface adaptability, limiting generalization to real-world attack prevalence and the broader range of low-resource languages. T1--T3 measures changes under increasing explicitness; isolating the contribution of recovery from other changes in the requests requires further controls. Operative UR depends on annotation rules for task-aware refusal, safe alternatives, and meta-linguistic handling. English and TOK/LRL templates apply different generic-refusal rules, and independent human agreement was measured on DR-TOK. Bootstrap intervals condition on these labels and quantify item-sampling uncertainty. Provider versions may drift; the archived generations and metadata record the evaluated model behavior.
+
+\section*{Ethical Considerations}
+The study uses harmful requests to evaluate recovery and safety behavior, creating dual-use risks. The main text reports aggregate results. Reproducibility materials include code, configurations, annotation guidelines, aggregate tables, metadata schemas, and selected examples. Access to sensitive prompt/output records follows the licenses and terms of the source resources.
+
+\bibliography{custom}
+
+\appendix
+\raggedbottom
+\setcounter{dbltopnumber}{2}
+\renewcommand{\dbltopfraction}{0.80}
+\renewcommand{\dblfloatpagefraction}{0.70}
+\renewcommand{\textfraction}{0.10}
+\makeatletter
+\setlength{\@dblfptop}{0pt}
+\setlength{\@dblfpsep}{12pt}
+\makeatother
+
+\paragraph{Metric notation.}
+Operative UR and ASR retain the same definitions throughout the paper. In supplementary diagnostic analyses, $\IRR$ denotes recognition alone and Shift denotes response-frame changes; IR, IS, and SO are the underlying annotation fields. Appendix~\ref{app:operative-metrics} defines their relation to the headline metrics. Agreement statistics concern operative UR and ASR.
+
+\input{appendix/a-design}
+\input{appendix/b-measurement}
+\input{appendix/c-reliability}
+\input{appendix/d-statistics}
+\input{appendix/e-controls}
+\input{appendix/f-auxiliary}
+\input{appendix/g-reproducibility}
+
+\end{document}

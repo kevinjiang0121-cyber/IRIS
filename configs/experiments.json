@@ -1,0 +1,80 @@
+{
+  "EN": {
+    "prompts": "data/prompts/EN.json",
+    "language": "en",
+    "template": 1,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "TK": {
+    "prompts": "data/prompts/TK.json",
+    "language": "tk",
+    "template": 3,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "Esperanto": {
+    "prompts": "data/prompts/Esperanto.json",
+    "language": "eo",
+    "template": 2,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "Caesar": {
+    "prompts": "data/prompts/Caesar.json",
+    "language": "en",
+    "template": 4,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "FormalLogic": {
+    "prompts": "data/prompts/FormalLogic.json",
+    "language": "en",
+    "template": 8,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "ArtPrompt": {
+    "prompts": "data/prompts/ArtPrompt.json",
+    "language": "en",
+    "template": 6,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "Zulu": {
+    "prompts": "data/prompts/Zulu.json",
+    "language": "en",
+    "template": 9,
+    "judge_prompts": "configs/judge_prompts_v22_lrl.yaml"
+  },
+  "Yoruba": {
+    "prompts": "data/prompts/Yoruba.json",
+    "language": "en",
+    "template": 9,
+    "judge_prompts": "configs/judge_prompts_v22_lrl.yaml"
+  },
+  "TP-disambig": {
+    "prompts": "data/prompts/TP-disambig.json",
+    "language": "tk",
+    "template": 3,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "HumanJailbreak": {
+    "prompts": "data/prompts/HumanJailbreak.json",
+    "language": "tk",
+    "template": 3,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "T1": {
+    "prompts": "data/prompts/T1.json",
+    "language": "en",
+    "template": 1,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "T2": {
+    "prompts": "data/prompts/T2.json",
+    "language": "en",
+    "template": 1,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  },
+  "T3": {
+    "prompts": "data/prompts/T3.json",
+    "language": "en",
+    "template": 1,
+    "judge_prompts": "configs/judge_prompts.yaml"
+  }
+}

@@ -1,0 +1,20 @@
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{Operative UR} & \multicolumn{2}{c}{ASR} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Model & $\kappa$ & Agree (\%) & $\kappa$ & Agree (\%) \\
+\midrule
+GPT-4o & 0.34 & 81.0 & 0.56 & 97.1 \\
+Sonnet 4.5 & 0.56 & 78.1 & 0.57 & 82.9 \\
+Opus 4.5 & 0.63 & 81.9 & 0.59 & 94.3 \\
+Gemini 3 Flash & 0.48 & 74.3 & 0.66 & 84.8 \\
+DeepSeek~V3.2 & 0.38 & 81.0 & 0.56 & 92.4 \\
+Qwen3-Max & 0.29 & 80.0 & 0.33 & 85.7 \\
+\bottomrule
+\end{tabular}
+\caption{Headline-metric reliability on independent A1/A2 DR-TOK labels before adjudication ($n=105$ per model). UR uses each reader's joint IR/IS event; ASR uses SO$\ge2$. Agreement counts both positive and negative matches.}
+\label{tab:iaa-kappa}
+\end{table}

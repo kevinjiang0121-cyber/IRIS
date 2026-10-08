@@ -1,0 +1,120 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Chao et~al.(2024)Chao, Debenedetti, Robey, Andriushchenko, Croce,
+  Sehwag, Dobriban, Flammarion, Pappas, Tram{\`e}r, Hassani, and
+  Wong}]{chao2024jailbreakbench}
+Patrick Chao, Edoardo Debenedetti, Alexander Robey, Maksym Andriushchenko,
+  Francesco Croce, Vikash Sehwag, Edgar Dobriban, Nicolas Flammarion, George~J.
+  Pappas, Florian Tram{\`e}r, Hamed Hassani, and Eric Wong. 2024.
+\newblock {JailbreakBench}: An open robustness benchmark for jailbreaking large
+  language models.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  37:55005--55029.
+
+\bibitem[{Chu et~al.(2025)Chu, Li, Yang, Leng, Lin, Shen, Backes, Shen, and
+  Zhang}]{chu2025jades}
+Junjie Chu, Mingjie Li, Ziqing Yang, Ye~Leng, Chenhao Lin, Chao Shen, Michael
+  Backes, Yun Shen, and Yang Zhang. 2025.
+\newblock {JADES}: A universal framework for jailbreak assessment via
+  decompositional scoring.
+\newblock \emph{arXiv preprint arXiv:2508.20848}.
+
+\bibitem[{Deng et~al.(2024)Deng, Zhang, Pan, and Bing}]{ICLR2024_6b396f76}
+Yue Deng, Wenxuan Zhang, Sinno~Jialin Pan, and Lidong Bing. 2024.
+\newblock \href
+  {https://proceedings.iclr.cc/paper_files/paper/2024/file/6b396f766a50e0853a5164e68048540c-Paper-Conference.pdf}
+  {Multilingual jailbreak challenges in large language models}.
+\newblock In \emph{International Conference on Learning Representations},
+  volume 2024, pages 24634--24651.
+
+\bibitem[{Jiang et~al.(2024)Jiang, Xu, Niu, Xiang, Ramasubramanian, Li, and
+  Poovendran}]{jiang2024artprompt}
+Fengqing Jiang, Zhangchen Xu, Luyao Niu, Zhen Xiang, Bhaskar Ramasubramanian,
+  Bo~Li, and Radha Poovendran. 2024.
+\newblock {ArtPrompt}: {ASCII} art-based jailbreak attacks against aligned
+  {LLMs}.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 15157--15173.
+
+\bibitem[{Lang(2014)}]{lang2014tokipona}
+Sonja Lang. 2014.
+\newblock \emph{Toki Pona: The Language of Good}.
+\newblock Sonja Lang.
+
+\bibitem[{Mazeika et~al.(2024)Mazeika, Phan, Yin, Zou, Wang, Mu, Sakhaee, Li,
+  Basart, Li, Forsyth, and Hendrycks}]{pmlr-v235-mazeika24a}
+Mantas Mazeika, Long Phan, Xuwang Yin, Andy Zou, Zifan Wang, Norman Mu, Elham
+  Sakhaee, Nathaniel Li, Steven Basart, Bo~Li, David Forsyth, and Dan
+  Hendrycks. 2024.
+\newblock \href {https://proceedings.mlr.press/v235/mazeika24a.html}
+  {{H}arm{B}ench: A standardized evaluation framework for automated red teaming
+  and robust refusal}.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{Proceedings of Machine Learning Research},
+  pages 35181--35224. PMLR.
+
+\bibitem[{Peng et~al.(2026)Peng, Wang, Wang, Li, Li, Ye, Wang, Jia, Zhang, and
+  Zhao}]{peng2025logic}
+Jingyu Peng, Maolin Wang, Nan Wang, Jiatong Li, Yuchen Li, Yuyang Ye, Wanyu
+  Wang, Pengyue Jia, Kai Zhang, and Xiangyu Zhao. 2026.
+\newblock \href {https://doi.org/10.18653/v1/2026.findings-acl.25} {Logic
+  jailbreak: Efficiently unlocking {LLM} safety restrictions through formal
+  logical expression}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2026}, pages 523--543, San Diego, California, United States. Association
+  for Computational Linguistics.
+
+\bibitem[{Souly et~al.(2024)Souly, Lu, Bowen, Trinh, Hsieh, Pandey, Abbeel,
+  Svegliato, Emmons, Watkins, and Toyer}]{souly2024strongreject}
+Alexandra Souly, Qingyuan Lu, Dillon Bowen, Tu~Trinh, Elvis Hsieh, Sana Pandey,
+  Pieter Abbeel, Justin Svegliato, Scott Emmons, Olivia Watkins, and Sam Toyer.
+  2024.
+\newblock A {StrongREJECT} for empty jailbreaks.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  37:125416--125440.
+
+\bibitem[{Wang et~al.(2024)Wang, Shi, Bai, and
+  Hsieh}]{wang-etal-2024-defending}
+Yihan Wang, Zhouxing Shi, Andrew Bai, and Cho-Jui Hsieh. 2024.
+\newblock \href {https://doi.org/10.18653/v1/2024.findings-acl.948} {Defending
+  {LLM}s against jailbreaking attacks via backtranslation}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2024}, pages 16031--16046, Bangkok, Thailand. Association for
+  Computational Linguistics.
+
+\bibitem[{Xie et~al.(2025)Xie, Qi, Zeng, Huang, Sehwag, Huang, He, Wei, Li,
+  Sheng, Jia, Li, Li, Chen, Henderson, and Mittal}]{xie2025sorrybench}
+Tinghao Xie, Xiangyu Qi, Yi~Zeng, Yangsibo Huang, Udari~Madhushani Sehwag,
+  Kaixuan Huang, Luxi He, Boyi Wei, Dacheng Li, Ying Sheng, Ruoxi Jia, Bo~Li,
+  Kai Li, Danqi Chen, Peter Henderson, and Prateek Mittal. 2025.
+\newblock \href {https://openreview.net/forum?id=YfKNaRktan} {{SORRY}-bench:
+  Systematically evaluating large language model safety refusal}.
+\newblock In \emph{The Thirteenth International Conference on Learning
+  Representations}.
+
+\bibitem[{Yong et~al.(2023)Yong, Menghini, and Bach}]{yong2023low}
+Zheng-Xin Yong, Cristina Menghini, and Stephen~H Bach. 2023.
+\newblock {L}ow-{R}esource {L}anguages {J}ailbreak {GPT}-4.
+\newblock Spotlight in Workshop: Socially Responsible Language Modelling
+  Research (SoLaR), NeurIPS, \url{https://arxiv.org/abs/2310.02446}.
+
+\bibitem[{Yuan et~al.(2024)Yuan, Jiao, Wang, Huang, He, Shi, and
+  Tu}]{yuan2024cipherchat}
+Youliang Yuan, Wenxiang Jiao, Wenxuan Wang, Jen-Tse Huang, Pinjia He, Shuming
+  Shi, and Zhaopeng Tu. 2024.
+\newblock \href
+  {https://proceedings.iclr.cc/paper_files/paper/2024/hash/ed4c38fe7899d3653acf39b2102af8ba-Abstract-Conference.html}
+  {{GPT}-4 is too smart to be safe: Stealthy chat with {LLM}s via cipher}.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Zhang et~al.(2025)Zhang, Ding, Zhang, and
+  Tao}]{zhang-etal-2025-intention}
+Yuqi Zhang, Liang Ding, Lefei Zhang, and Dacheng Tao. 2025.
+\newblock \href {https://aclanthology.org/2025.coling-main.199/} {Intention
+  analysis makes {LLM}s a good jailbreak defender}.
+\newblock In \emph{Proceedings of the 31st International Conference on
+  Computational Linguistics}, pages 2947--2968, Abu Dhabi, UAE. Association for
+  Computational Linguistics.
+
+\end{thebibliography}

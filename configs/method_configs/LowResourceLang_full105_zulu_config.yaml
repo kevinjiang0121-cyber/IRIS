@@ -1,0 +1,10 @@
+# LowResourceLang full105 override
+default_method_hyperparameters:
+  target_language: zulu
+  translations_path: ./data/full105/low_resource_translations_zulu.json
+  decode_hint: false
+
+zulu:
+  target_language: zulu
+  translations_path: ./data/full105/low_resource_translations_zulu.json
+  decode_hint: false

@@ -1,0 +1,21 @@
+# ArtPrompt method config — jiang2024artprompt
+# Masking model is routed via OpenRouter to mirror models.yaml convention.
+
+default_method_hyperparameters:
+  masking_model: openai/gpt-4o-2024-11-20  # OpenRouter slug
+  masking_model_key: <your_openrouter_api_token>  # if placeholder, falls back to OPENROUTER_API_KEY env var
+  masking_model_base_url: https://openrouter.ai/api/v1
+  masking_direction: horizontal  # or "vertical"
+  fontname: cards  # ['gen', 'alphabet', 'letters', 'keyboard', 'cards', 'puzzle']
+
+# Experiment presets — selectable via --experiment_name
+default:
+  masking_model: openai/gpt-4o-2024-11-20
+  masking_direction: horizontal
+  fontname: cards
+
+# Variant: vertical ASCII layout (jiang2024 reports horizontal as primary)
+vertical:
+  masking_model: openai/gpt-4o-2024-11-20
+  masking_direction: vertical
+  fontname: cards

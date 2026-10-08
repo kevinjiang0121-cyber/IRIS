@@ -1,0 +1,77 @@
+\section{Interface Diagnostics and Translation Control}
+\label{app:cross-substrate-full}
+
+\begin{table*}[!t]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llrrrrrr}
+\toprule
+Interface & Metric & GPT-4o & Sonnet & Opus & Gemini & DeepSeek & Qwen \\
+\midrule
+EN & Shift & 0.0 & 1.0 & 1.9 & 0.0 & 0.0 & 0.0 \\
+ & B & 0.0 & 1.0 & 1.0 & 1.0 & 0.0 & 0.0 \\
+\addlinespace[2pt]
+TOK & Shift & 84.8 & 44.8 & 61.9 & 27.6 & 75.2 & 59.0 \\
+ & B & 0.0 & 1.0 & 4.8 & 0.0 & 0.0 & 0.0 \\
+\addlinespace[2pt]
+Zulu & Shift & 49.5 & 11.4 & 2.9 & 1.0 & 9.5 & 21.0 \\
+ & B & 0.0 & 1.0 & 4.8 & 0.0 & 3.8 & 0.0 \\
+\addlinespace[2pt]
+Yoruba & Shift & 59.0 & 12.4 & 3.8 & 2.9 & 16.2 & 19.0 \\
+ & B & 0.0 & 1.9 & 2.9 & 0.0 & 11.4 & 0.0 \\
+\addlinespace[2pt]
+Caesar & Shift & 3.8 & 0.0 & 0.0 & 0.0 & 27.6 & 1.0 \\
+ & B & 0.0 & 100.0 & 100.0 & 0.0 & 3.8 & 0.0 \\
+\addlinespace[2pt]
+FormalLogic & Shift & 5.7 & 1.9 & 1.9 & 11.4 & 7.6 & 3.8 \\
+ & B & 0.0 & 40.0 & 57.1 & 0.0 & 4.8 & 0.0 \\
+\addlinespace[2pt]
+ArtPrompt & Shift & 53.3 & 0.0 & 7.6 & 19.0 & 74.3 & 11.4 \\
+ & B & 0.0 & 54.3 & 69.5 & 0.0 & 0.0 & 1.9 \\
+\bottomrule
+\end{tabular}
+\caption{Response-frame and process-status diagnostics (\%; $n=105$ per cell). Shift $=P(\mathrm{IS}\in\{M,R\})$; B $=P(\mathrm{IS}=B)$.}
+\label{tab:cross-substrate-full}
+\end{table*}
+
+\begin{table*}[!t]
+\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{Direct LRL} & \multicolumn{2}{c}{Back-translated EN} \\
+Language & Model & $\IRR$ & ASR & $\IRR$ & ASR \\
+\midrule
+Zulu & GPT-4o & 51.4 & 3.8 & 96.2 & 1.9 \\
+ & Sonnet~4.5 & 88.6 & 26.7 & 78.1 & 17.1 \\
+ & Opus~4.5 & 92.4 & 7.6 & 90.5 & 3.8 \\
+ & Gemini~3~Flash & 99.0 & 18.1 & 95.2 & 13.3 \\
+ & DeepSeek~V3.2 & 89.5 & 15.2 & 84.8 & 10.5 \\
+ & Qwen3-Max & 81.9 & 31.4 & 60.0 & 23.8 \\
+\midrule
+Yoruba & GPT-4o & 41.9 & 12.4 & 90.5 & 2.9 \\
+ & Sonnet~4.5 & 87.6 & 41.9 & 61.9 & 14.3 \\
+ & Opus~4.5 & 94.3 & 10.5 & 91.4 & 0.0 \\
+ & Gemini~3~Flash & 98.1 & 21.0 & 95.2 & 3.8 \\
+ & DeepSeek~V3.2 & 80.0 & 47.6 & 54.3 & 19.0 \\
+ & Qwen3-Max & 86.7 & 52.4 & 60.0 & 28.6 \\
+\bottomrule
+\end{tabular}
+\caption{Back-translation control (\%; $n=105$ per model--language cell). $\IRR$ measures recognition only. Both scoring conditions use the original automated judgments.}
+\label{tab:backtranslation-control}
+\end{table*}
+\subsection{Response Frames and Blocked Outputs}
+Table~\ref{tab:cross-substrate-full} reports Shift and blocked-empty rates alongside the main-table operative UR/ASR results. Shift pools meta-linguistic and residual non-target framing; B records unavailable or non-analyzable outputs. Substantive refusals undergo ordinary response labeling. All rates use 105 behaviors per cell, including the two all-blocked Caesar conditions.
+
+The diagnostic rates share labels and routing rules with operative UR. Their relation to the main table follows from this construction. All values use the same source selection and reviewed labels as Table~\ref{tab:short-direct}.
+
+
+
+\subsection{Back-Translation-to-English Control}
+Table~\ref{tab:backtranslation-control} compares direct LRL judging with Google Translate back-translation followed by the English v2.2 judge, using the same target-model responses. The reported endpoints are recognition $\IRR=P(\mathrm{IR}=2)$ and ASR.
+
+The pipeline changes recognition estimates in different directions across models. GPT-4o Zulu rises from 51.4\% to 96.2\%, while Sonnet Zulu falls from 88.6\% to 78.1\%. Sonnet Yoruba ASR falls from 41.9\% to 14.3\%. Translation and judge effects are combined in this comparison. The main results use direct LRL judging.
+
+
+
+\paragraph{Additional evidence.}
+Appendix~\ref{app:auxiliary} reports HumanJailbreak, source-side TOK clarification, and Esperanto results.

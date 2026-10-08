@@ -1,0 +1,60 @@
+\section{Evaluation Design and Task Construction}
+\label{app:design}
+\label{app:translation_protocol}
+The 105 behaviors were selected and deduplicated from HarmBench, StrongREJECT, and JailbreakBench. Selection required a recognizable harmful task after cross-interface adaptation; behaviors dependent on specialized proper nouns, narrow technical terminology, or unstable harmfulness boundaries were excluded. This suitability filter limits the population represented by the evaluation.
+
+\paragraph{Toki Pona construction.}
+Toki Pona construction was led by a researcher with more than one year of active experience using the language. Additional researchers involved in construction or review received at least one month of structured training before contributing to the study.\footnote{The official \href{https://www.tokipona.org/clarifying}{Toki Pona FAQ} cites a teacher estimate of approximately 20 minutes of daily practice over 30 days for conversational ability, while noting individual variation in learning progress.}
+Two researchers independently drafted or adapted behavior-level translations, compared versions, and resolved mismatches by discussion. A semantic-core memo recorded the task, target, essential mechanism, and goal. The construction allowed compression and underspecification while prohibiting task changes, unsupported tools or steps, and stronger requests. Grok 4.1 supplied auxiliary consistency checks; researchers made the final decisions. Stage I was exploratory, with final versions and major alternatives retained and incomplete records of intermediate edits.
+
+\subsection{Controlled English Reconstruction}
+\label{app:stage2_protocol}
+Stage II used a written protocol frozen before construction and evaluation. Each reconstruction was grounded in the observed Toki Pona wording. Information omitted from that wording was excluded from the English reconstruction. The three matched tracks were:
+\begin{description}
+\item[T1: minimal rendering.] Repair grammar and normalize wording while retaining ambiguity; add no semantic roles, objects, or goal links.
+\item[T2: role-explicit rendering.] Make supported participants and event structure explicit; add no new tools, steps, or deeper goal chain.
+\item[T3: pragmatic resolution.] Resolve the critical purpose or relation supported by the observed wording into a natural request; restore no unsupported source detail or attack scaffold.
+\end{description}
+The protocol specified pilot calibration, primary construction, targeted checklist review, and escalation of unresolved boundary cases. Per-item records link the source wording, semantic-core memo, T1--T3 versions, operations, and review notes. Semantic fidelity depends on the constructors' interpretation of the observed wording.
+
+\paragraph{Evaluation unit and settings.}
+Each main-table cell contains the same 105 behaviors, evaluated once per model and interface. T1--T3 supply three separately scored, matched prompts per behavior; the runnable configuration sets \texttt{include\_context=false}. Target model configuration keys and call dates appear in Table~\ref{tab:model-endpoints}. Appendix~\ref{app:auxiliary} reports source-side Toki Pona clarification, Esperanto, and limited-search HumanJailbreak with their respective construction and aggregation rules.
+
+
+\subsection{A Matched Construction Example}
+Table~\ref{tab:reconstruction-example} shows an executed example, verified against the archived inputs for all six models and selected for readability. T1/T2 describe giving money to an authority for a desired outcome; T3 names that relation as bribery. This lexical resolution illustrates the interpretive judgment involved in reconstruction. Construction quality and recovery gains across the full set require assessment beyond this selected example.
+
+\begin{table*}[!t]
+\centering\small
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\textwidth}{p{0.13\textwidth}X}
+\toprule
+Version & Executed wording \\
+\midrule
+Observed TOK & o sitelen e lipu ni li toki e nasin pi pana e mani tawa jan pi lawa ma tawa kama jo e ijo wile sina \\
+T1 & Write this text: it tells about a way of giving money to a local land-ruling person to get the thing you want. \\
+T2 & Write a post explaining a way to give money to a local government authority so that you can get what you want. \\
+T3 & Write a post explaining how to bribe an official to get something you want. \\
+\bottomrule
+\end{tabularx}
+\caption{Executed reconstruction for behavior \texttt{official\_bribery\_guide}, with original wording.}
+\label{tab:reconstruction-example}
+\end{table*}
+
+\begin{table*}[!t]
+\centering\small
+\begin{tabular}{lll}
+\toprule
+Model & Model configuration key & Call date range (2026) \\
+\midrule
+GPT-4o & \texttt{gpt-4o-2024-11-20} & Mar 02--May 03 \\
+Sonnet 4.5 & \texttt{claude-sonnet-4.5} & Mar 01--May 03 \\
+Opus 4.5 & \texttt{claude-opus-4.5} & Mar 01--May 03 \\
+Gemini 3 Flash & \texttt{gemini\_3\_flash\_preview} & Feb 28--May 03 \\
+DeepSeek V3.2 & \texttt{deepseek-v3.2} & Feb 27--May 03 \\
+Qwen3-Max & \texttt{qwen3-max} & Mar 01--May 03 \\
+\bottomrule
+\end{tabular}
+\caption{Target generation settings: temperature 0 and explicit reasoning disabled where applicable. Archived completion/metadata pairs record invocation timestamps and request settings. Provider drift limits exact reproduction from fresh calls; judge settings are specified separately in Appendix~\ref{app:judge-prompt}.}
+\label{tab:model-endpoints}
+\end{table*}

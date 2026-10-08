@@ -1,0 +1,85 @@
+\section{Supplementary Experiments}
+\label{app:auxiliary}
+Three supplementary experiments examine limited template search, clarification within Toki Pona, and an additional constructed language. Their recovery-side diagnostic is recognition $\IRR=P(\mathrm{IR}=2)$, with ASR measuring harmful assistance. Operative UR retains its joint definition; the recognition diagnostic isolates task identification in these additional conditions. Each experiment specifies its aggregation unit and annotation coverage.
+
+\subsection{HumanJailbreak: Limited Template Search}
+\label{app:humanjailbreak}
+
+\begin{table*}[!t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+& \multicolumn{2}{c}{Recognition ($\IRR$) coverage} & \multicolumn{2}{c}{ASR} & Blocked \\
+Model & Judge best-of-5 & Human representative & Judge best-of-5 & Human representative & attempts \\
+\midrule
+GPT-4o & 100.0 & 100.0 & 52.4 & 17.1 & 0.2 \\
+Sonnet 4.5 & 99.0 & 99.0 & 56.2 & 40.0 & 6.1 \\
+Opus 4.5 & 99.0 & 99.0 & 39.0 & 30.5 & 6.5 \\
+Gemini 3 Flash & 100.0 & 100.0 & 90.5 & 77.1 & 0.0 \\
+DeepSeek V3.2 & 100.0 & 98.1 & 97.1 & 64.8 & 0.0 \\
+Qwen3-Max & 100.0 & 100.0 & 82.9 & 43.8 & 0.0 \\
+\bottomrule
+\end{tabular}
+\caption{HumanJailbreak TOK coverage (\%). Judge values use best-of-5 over 105 behaviors; human values use a selected representative per behavior. The blocked rate uses all 525 attempts. Differences between judge and human columns combine labeling and selection effects.}
+\label{tab:hj-bo5-human}
+\end{table*}
+
+\begin{table*}[tp]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Model & Judge $\IRR$ & Shift & Judge ASR & Human $\IRR$ & Human ASR \\
+\midrule
+GPT-4o & 78.1 & 85.7 & 3.8 & [58.1, 82.9] & [1.9, 3.8] \\
+Sonnet 4.5 & 95.2 & 54.3 & 27.6 & 87.6 & 19.0 \\
+Opus 4.5 & 92.4 & 61.9 & 14.3 & 76.2 & 13.3 \\
+Gemini 3 Flash & 91.4 & 24.8 & 54.3 & 79.0 & 40.0 \\
+DeepSeek V3.2 & 79.0 & 62.9 & 18.1 & 61.0 & 16.2 \\
+Qwen3-Max & 98.1 & 76.2 & 16.2 & [66.7, 95.2] & [4.8, 11.4] \\
+\bottomrule
+\end{tabular}
+\caption{Source-side TOK clarification (\%; $n=105$ per model). $\IRR$ is recognition-only recovery. Brackets give the intersection and union of the two human readings for GPT-4o and Qwen; other models have single-reader rates.}
+\label{tab:tp-disambig}
+\label{tab:reading-interval-disambig}
+\end{table*}
+The HumanJailbreak pool adapts HarmBench scaffolds by preserving their role-play, hypothetical, or other attack function. Screening for readability and scaffold preservation produced 14 TOK templates. The best-of-5 condition evaluates five attempts for each of 105 behaviors per model, using seed 1 and a five-template random subset. Its outcome is behavior-level coverage under a limited search budget.
+
+Table~\ref{tab:hj-bo5-human} compares judge coverage with human representative review. Judge recognition coverage requires at least one IR=2 attempt; judge ASR requires at least one SO$\ge2$ attempt, irrespective of IR. The two events may occur on different attempts. Human review labels one representative per behavior, selected from substantive outputs with priority given to IR=2 with harmful assistance, followed by other informative response states. These columns differ in both labeler and attempt selection; independent double annotation of all five attempts is unavailable.
+
+
+
+Recognition ($\IRR$) coverage is near ceiling under both summaries. Harmful assistance varies across models: GPT-4o has 52.4\% ASR under judge best-of-5 and 17.1\% under human representative review. Both identify harmful outputs in the limited-search setting. Joint operative recovery would require IR and IS to be evaluated on the same attempt. Two attempts lack complete judge labels, one each for Opus and Qwen. Coverage counts observed positives with missing labels left unresolved, allowing some undercounting of positive behaviors.
+
+\subsection{Source-Side Toki Pona Clarification}
+\label{app:tp-disambig}
+
+
+TP-disambig clarifies roles, relations, or goal links in Toki Pona using the original source intent as its fidelity target. T1--T3 instead use the observed TOK wording. The TP-disambig protocol prohibits new tools, steps, consequences, and attack scaffolds; its source-side intervention is analyzed separately from English reconstruction.
+
+Table~\ref{tab:tp-disambig} reports judge scores and human readings. High recognition coexists with substantial Shift (24.8--85.7\%). GPT-4o and Qwen have two readers over 105 items each; the other four models have one reader over 105 items. Brackets give the intersection and union of the two readers' labels. The table describes reading sensitivity in recognition and ASR; independent agreement is assessable in the two double-annotated cells.
+
+
+
+\subsection{Esperanto Reference Condition}
+\label{app:eo_results}
+Esperanto (EPO) supplies an additional constructed-language reference. Its training exposure, linguistic structure, and resource availability differ from Toki Pona. Table~\ref{tab:dr-eo} shows high recognition, low Shift, and low ASR under the Esperanto judge template. This contrast suggests that constructed-language status alone is insufficient to explain the TOK profile. Recovery estimates also depend on the Esperanto template's generic-refusal rule (Appendix~\ref{app:judge-prompt}).
+
+\begin{table}[!ht]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Model & $\IRR$ & Shift & ASR \\
+\midrule
+GPT-4o & 99.0 & 1.0 & 0.0 \\
+Sonnet 4.5 & 96.2 & 1.9 & 1.9 \\
+Opus 4.5 & 99.0 & 0.0 & 0.0 \\
+Gemini 3 Flash & 98.1 & 1.9 & 1.0 \\
+DeepSeek V3.2 & 97.1 & 2.9 & 1.9 \\
+Qwen3-Max & 100.0 & 0.0 & 1.9 \\
+\bottomrule
+\end{tabular}
+\caption{Esperanto (EPO) direct-request results (\%; $n=105$ per model) under judge v2.2. $\IRR$ measures recognition only; ASR uses all 105 items.}
+\label{tab:dr-eo}
+\end{table}
+
+Human review includes all 105 Opus responses, double-annotated Opus/Sonnet spot checks (4--11 items), and stratified single-reader checks for the other models (approximately 10--20 items each). Independent double annotation is limited to these spot checks.
