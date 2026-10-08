@@ -170,6 +170,6 @@ It includes no old generated answers or machine-judgment archives.
 The execution/scoring pipeline derives from HarmBench (Center for AI Safety).
 Behavior sources include HarmBench, StrongREJECT and JailbreakBench. Interface
 implementations include ArtPrompt and Logic Jailbreak. Preserve upstream notices;
-the software license does not override data/resource terms. Study-author attribution is provided in LICENSE. `MANIFEST.json` lists file sizes and hashes.
+the software license does not override data/resource terms. Software copyright notices are provided in LICENSE. `MANIFEST.json` lists file sizes and hashes.
 
 Translation generators default to all 105 matched behavior IDs and write new caches to `outputs/assets/`; included frozen caches are left intact.
