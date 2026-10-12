@@ -18,7 +18,8 @@ require(report['archive_sha256'] == ZIP_SHA, 'Wrong source revision')
 for name, sha in report['outputs'].items():
     require(hashlib.sha256((bundle / name).read_bytes()).hexdigest() == sha, 'Output mutated: ' + name)
 meta = yaml.safe_load((bundle / 'README.md').read_text().split('---', 2)[1])
-require('license' not in meta, 'Do not add an unreviewed blanket license')
+require(meta.get('license') == 'other' and meta.get('license_link') == 'LICENSE_DATA.md',
+        'Mixed component licenses must be stated accurately')
 with zipfile.ZipFile(repo / 'artifacts/data.zip') as z:
     for config in meta['configs']:
         name = config['config_name']

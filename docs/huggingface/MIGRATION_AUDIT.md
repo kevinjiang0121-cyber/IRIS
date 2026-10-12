@@ -99,3 +99,11 @@ MasterKey follow-up (2026-10-13): the selected question itself appears in the
 CC BY 4.0 arXiv v2 Appendix A. Direct published-text reuse evidence resolves
 the previous base-question permission gap; retain component CC BY attribution
 and modification notices. No blanket license or publication is authorized.
+
+## Maintainer license decision (2026-10-13)
+
+The maintainer authorized CC BY 4.0 for IRIS-held data contributions; imported
+materials retain their terms. The card uses mixed component-license metadata
+and links LICENSE_DATA.md rather than claiming a blanket MIT or CC BY grant.
+All 105 inputs are preserved. Final upstream/context/generated-asset and manual
+text checks remain; this documentation update does not upload data.
