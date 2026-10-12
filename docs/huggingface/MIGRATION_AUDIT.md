@@ -94,3 +94,8 @@ Follow-up: the movie input corresponds semantically to custom record 194, not
 academic-papers record 193. Updated mapping: 19 base counterparts with MIT
 evidence, one MasterKey dataset permission unresolved. Historical movie edits
 remain unverified. No input deletion or license assignment occurs.
+
+MasterKey follow-up (2026-10-13): the selected question itself appears in the
+CC BY 4.0 arXiv v2 Appendix A. Direct published-text reuse evidence resolves
+the previous base-question permission gap; retain component CC BY attribution
+and modification notices. No blanket license or publication is authorized.

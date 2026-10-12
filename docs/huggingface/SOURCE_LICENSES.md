@@ -37,3 +37,14 @@ input subsets, with accurate row counts and coverage limits; do not advertise
 that subset as the full 105-behavior panel. Gating access is not a substitute for
 redistribution permission. Linking HF Papers to the existing GitHub archive can
 proceed separately from dataset migration.
+
+## MasterKey resolution for the selected item (2026-10-13)
+
+employee_computer_monitoring's base question is included in the author-written
+Privacy example in arXiv:2307.08715v2 Appendix A. The article is CC BY 4.0;
+no item-specific third-party exclusion is indicated there. This supplies a
+direct reuse basis for that published question, not a blanket license for the
+external MasterKey dataset. Preserve Deng et al. attribution, article/version
+and CC BY 4.0 links, and indicate IRIS rephrasing and translation. See the latest
+section of STRONGREJECT_AUDIT.md; earlier unresolved statements are superseded
+for this specific base question. This component must not be tagged as MIT.
