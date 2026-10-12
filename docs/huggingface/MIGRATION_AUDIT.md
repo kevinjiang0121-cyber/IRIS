@@ -89,3 +89,8 @@ See STRONGREJECT_AUDIT.md and STRONGREJECT_PROVENANCE.csv: 19 strong
 correspondences, plus one uncertain candidate. MIT evidence was found for 18
 strongly corresponding base prompts; two items need further provenance/terms
 work. Preserve all inputs pending investigation. No exclusion was committed.
+
+Follow-up: the movie input corresponds semantically to custom record 194, not
+academic-papers record 193. Updated mapping: 19 base counterparts with MIT
+evidence, one MasterKey dataset permission unresolved. Historical movie edits
+remain unverified. No input deletion or license assignment occurs.
