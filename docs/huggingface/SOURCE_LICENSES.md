@@ -8,18 +8,22 @@ itself grant redistribution rights. Do not tag the complete dataset `mit`.
 | IRIS conversion software | Root LICENSE/NOTICE: MIT software only | Preserve root software notice; does not license outputs |
 | JailbreakBench, 52 labeled rows | [JBB-Behaviors card](https://huggingface.co/datasets/JailbreakBench/JBB-Behaviors/blob/main/README.md) explicitly labels dataset MIT | Strongest dataset-level evidence; retain notices, trace original items and inherited sources |
 | HarmBench, 33 labeled rows | [LICENSE](https://github.com/centerforaisafety/HarmBench/blob/main/LICENSE) MIT, copyright 2024 centerforaisafety; [README](https://github.com/centerforaisafety/HarmBench/blob/main/README.md) | Repository MIT is evidence, but selected contextual content and third-party origins need item-level review |
-| StrongReject/rewrite, 20 labeled rows | [LICENSE](https://github.com/dsbowen/strong_reject/blob/main/LICENSE) MIT, copyright 2024 Dillon Bowen; [README License section](https://github.com/dsbowen/strong_reject#license) lists inherited datasets | **Unresolved:** README names MaliciousInstruct, HarmfulQ and OpenAI System Card as no-license sources, and other sources without stated licenses. A rewritten row cannot automatically be re-licensed |
+| StrongReject/rewrite, 20 labeled rows | [LICENSE](https://github.com/dsbowen/strong_reject/blob/main/LICENSE) MIT, copyright 2024 Dillon Bowen; [README License section](https://github.com/dsbowen/strong_reject#license) lists inherited datasets | Item reconstruction finds MIT evidence for 18 strongly corresponding base prompts; one MasterKey item and one uncertain custom mapping remain open. See STRONGREJECT_AUDIT.md. IRIS-added materials require separate decisions |
 | IRIS human translations, redactions, generated caches and manual FOL backfills | ZIP source labels and public construction notes | Author/contributor rights and generated-asset service terms not specified; require maintainer confirmation |
 | Current manuscript aggregate tables | Already public in ZIP; no explicit data grant in NOTICE | Authors should establish applicable terms before a Hub release |
 | ArtPrompt / Logic Jailbreak implementations | Attribution in NOTICE and bibliography | Not exported as datasets by this converter; their code licenses do not authorize benchmark data |
 | Paper figure assets | Separate figure attribution in NOTICE | Excluded entirely from this conversion |
 
-The IRIS source field supplies benchmark names, not upstream item IDs/revisions
-or precise original text provenance. We cannot identify which of the 20 rewritten
-StrongREJECT rows inherit a no-license source from these labels alone. Keep
-these rows and their derived assets on hold until mapped to the upstream item
-and its terms or written permission. The same check applies to third-party
-context strings even when the hosting benchmark has permissive metadata.
+The IRIS source field supplies benchmark names, not original item IDs or
+revisions. A subsequent public-source reconstruction now identifies 19 strong
+correspondences (11 custom, five DAN, two AdvBench, one MasterKey) and one
+uncertain custom candidate. See [item audit](STRONGREJECT_AUDIT.md) and
+[20-row mapping](STRONGREJECT_PROVENANCE.csv). The original StrongREJECT README
+explicitly grants MIT for custom generated data; DAN and AdvBench also have MIT
+evidence. MasterKey's externally hosted dataset terms and the movies-versus-
+academic-papers candidate remain unresolved. Reconstruction does not certify
+historical lineage or rights for IRIS-added contexts/translations. No rows are
+removed, and no blanket MIT metadata is assigned.
 
 Before public upload, record upstream repository/dataset revisions, original
 item identifiers, license URLs/full required notices, modifications (translation,
