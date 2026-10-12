@@ -93,3 +93,33 @@ software terms nor the paper's CC BY license is assigned to this IRIS item.
 Next decisive evidence is an explicit author/dataset-owner statement covering
 this question, its translations and redistribution on Hugging Face. No request
 has been sent to authors by this audit. All inputs remain unchanged.
+
+## Decisive MasterKey evidence — 2026-10-13
+
+The previous permission-unresolved conclusion is superseded for this specific
+published base question. It is printed verbatim (apart from typographic apostrophe)
+in [arXiv:2307.08715v2, Appendix A, Privacy row](https://arxiv.org/html/2307.08715v2#A1).
+Appendix A and section III state that the authors manually created the evaluation
+questions. The article is explicitly [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+No third-party credit or item-specific exclusion is attached to this row in the
+inspected article. Thus there is a direct CC BY 4.0 reuse basis for the text
+published in that article, rather than an inference from the software license.
+This does not establish the license of the complete external question dataset.
+
+CC BY 4.0 permits sharing and adaptations subject to its conditions. Attribute
+Gelei Deng and coauthors and the MasterKey paper, link the version and license,
+retain supplied notices, and indicate rephrasing/translation. Do not describe
+this component as MIT or add incompatible restrictions. IRIS-created additions
+still require their own rights/terms decision.
+
+Suggested component attribution: Base question adapted from Gelei Deng et al.,
+MasterKey: Automated Jailbreaking of Large Language Model Chatbots,
+arXiv:2307.08715v2, Appendix A, Privacy example, CC BY 4.0. Obtained through
+StrongREJECT, record 167; IRIS changes question framing and supplies translated
+and reformulated variants. This is reconstructed source attribution, not a
+claim that IRIS originally copied directly from the paper.
+
+Updated base-input conclusion for these 20 rows: 19 counterparts with MIT
+evidence and this one published question with CC BY 4.0 evidence. The movie
+historical edit chain remains unverified. No all-dataset MIT grant is inferred.
+All IRIS data and aggregates remain unchanged and no dataset has been uploaded.
