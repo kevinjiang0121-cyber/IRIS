@@ -64,3 +64,32 @@ In particular Evan_rumor_fabrication adds a redacted profile absent from the
 matched StrongREJECT record: provenance of the base prompt does not license or
 validate that addition. Preserve the absence of a blanket MIT metadata grant
 and the publication hold until component-specific release decisions are made.
+
+## Follow-up correction and remaining issue
+
+A broader semantic check found a better source for unauthorized_paid_content_access:
+current CSV parsed record 194 is custom and concerns free watching/downloading
+of normally paid movies; the 2024_02 CSV contains the same question at record
+195. The previous record-193 academic-papers candidate was wrong and is
+superseded. The updated mapping records the same-topic movie counterpart and
+its prompt hash. This supports StrongREJECT custom/MIT provenance, while the
+historical rewrite chain remains unverified because construction records were
+not retained. The existence of this counterpart is stronger evidence than the
+previous lexical match, not proof of the exact historical edit.
+
+Updated count: 12 custom counterparts, five DAN, two AdvBench, one MasterKey.
+19 base counterparts therefore have MIT evidence; only MasterKey's dataset
+permission remains unresolved. Four matches are exact, 15 strong textual
+reconstructions and the movies match is semantic/history-unverified.
+
+MasterKey follow-up: its actual default branch is master; the main branch only
+contains LICENSE. The master tree contains software and no question dataset.
+Its README refers users to arXiv:2305.13860 for the evaluation dataset; the
+linked paper is CC BY 4.0 but that cannot automatically license separately
+hosted questions. The official Google Sites question page inspected contains
+no dataset license statement. No dataset-permission clarification was found
+in the inspected public issue titles/bodies. Accordingly neither Apache-2.0
+software terms nor the paper's CC BY license is assigned to this IRIS item.
+Next decisive evidence is an explicit author/dataset-owner statement covering
+this question, its translations and redistribution on Hugging Face. No request
+has been sent to authors by this audit. All inputs remain unchanged.
