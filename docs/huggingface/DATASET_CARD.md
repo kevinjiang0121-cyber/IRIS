@@ -139,8 +139,8 @@ panel = load_dataset('json', data_files={'evaluation': 'data/behaviors.jsonl'})
 After an authorized Hub release, the declared configs support:
 
 ```python
-panel = load_dataset('AUTHOR_OR_ORG/IRIS', 'behaviors', split='evaluation')
-summary = load_dataset('AUTHOR_OR_ORG/IRIS', 'headline_metrics', split='aggregate')
+panel = load_dataset('ArthurTThomas/IRIS', 'behaviors', split='evaluation')
+summary = load_dataset('ArthurTThomas/IRIS', 'headline_metrics', split='aggregate')
 ```
 
 JSONL and explicit YAML file mappings target Dataset Viewer support without
