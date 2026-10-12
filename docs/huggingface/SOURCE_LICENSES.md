@@ -1,50 +1,45 @@
-# Source terms and unresolved rights — audited 2026-10-11
+# Data sources, attribution and license scope
 
-This is a provenance audit, not a new license. Public accessibility does not
-itself grant redistribution rights. Do not tag the complete dataset `mit`.
+IRIS-authored contributions use CC BY 4.0. Imported material retains its
+upstream terms. This document does not replace upstream license grants.
 
-| Component | Public evidence | Status/action |
+| Component | License evidence | Attribution and scope |
 |---|---|---|
-| IRIS conversion software | Root LICENSE/NOTICE: MIT software only | Preserve root software notice; does not license outputs |
-| JailbreakBench, 52 labeled rows | [JBB-Behaviors card](https://huggingface.co/datasets/JailbreakBench/JBB-Behaviors/blob/main/README.md) explicitly labels dataset MIT | Strongest dataset-level evidence; retain notices, trace original items and inherited sources |
-| HarmBench, 33 labeled rows | [LICENSE](https://github.com/centerforaisafety/HarmBench/blob/main/LICENSE) MIT, copyright 2024 centerforaisafety; [README](https://github.com/centerforaisafety/HarmBench/blob/main/README.md) | Repository MIT is evidence, but selected contextual content and third-party origins need item-level review |
-| StrongReject/rewrite, 20 labeled rows | [LICENSE](https://github.com/dsbowen/strong_reject/blob/main/LICENSE) MIT, copyright 2024 Dillon Bowen; [README License section](https://github.com/dsbowen/strong_reject#license) lists inherited datasets | Item reconstruction finds MIT evidence for 19 base counterparts; the movie counterpart is semantically matched with historical edits unverified, and one MasterKey item remains permission-unresolved. See STRONGREJECT_AUDIT.md. IRIS-added materials require separate decisions |
-| IRIS human translations, redactions, generated caches and manual FOL backfills | ZIP source labels and public construction notes | Author/contributor rights and generated-asset service terms not specified; require maintainer confirmation |
-| Current manuscript aggregate tables | Already public in ZIP; no explicit data grant in NOTICE | Authors should establish applicable terms before a Hub release |
-| ArtPrompt / Logic Jailbreak implementations | Attribution in NOTICE and bibliography | Not exported as datasets by this converter; their code licenses do not authorize benchmark data |
-| Paper figure assets | Separate figure attribution in NOTICE | Excluded entirely from this conversion |
+| IRIS-authored rewrites, contexts, human translations, compilation and aggregate tables | CC BY 4.0, authorized by the maintainer in this release preparation | Cite Haitong Jiang and the IRIS coauthors; link arXiv:2610.11766 and indicate subsequent changes. Applies only to rights held by the IRIS contributors |
+| JailbreakBench inputs | Dataset card declares MIT | [JBB-Behaviors](https://huggingface.co/datasets/JailbreakBench/JBB-Behaviors/blob/main/README.md); retain upstream notices; selected item/context provenance still requires final review |
+| HarmBench inputs | Repository MIT evidence | [HarmBench LICENSE](https://github.com/centerforaisafety/HarmBench/blob/main/LICENSE), copyright 2024 centerforaisafety; retain notices; selected third-party contexts still require final review |
+| StrongREJECT custom counterparts | Explicit MIT grant for custom generated data | [Original README](https://github.com/alexandrasouly/strongreject#license) and [LICENSE](https://github.com/alexandrasouly/strongreject/blob/main/LICENSE), copyright 2024 Center for Human-Compatible AI |
+| DAN counterparts | MIT evidence | [DAN LICENSE](https://github.com/verazuo/jailbreak_llms/blob/main/LICENSE), copyright 2023 Vera |
+| AdvBench counterparts | MIT evidence for Zou et al. 2023 | [llm-attacks LICENSE](https://github.com/llm-attacks/llm-attacks/blob/main/LICENSE), copyright 2023 Andy Zou. The unrelated arobey1/advbench project is not the source of these questions |
+| MasterKey selected published question | CC BY 4.0 article, Appendix A, Privacy example | Gelei Deng et al., [MasterKey, arXiv:2307.08715v2](https://arxiv.org/html/2307.08715v2), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Via StrongREJECT record 167; IRIS rephrases as tips and provides translations/reformulations |
+| Generated supplementary caches | Underlying texts retain upstream terms | The maintainer's grant applies to IRIS-held contributions only; generated-asset service terms must be checked for the actual providers before release |
+| Software | MIT | Root LICENSE applies to software, including conversion tooling |
 
-The IRIS source field supplies benchmark names, not original item IDs or
-revisions. A subsequent public-source reconstruction now identifies 20 counterparts (12 custom, five DAN, two AdvBench, one MasterKey);
-the movie counterpart is semantic with historical edits unverified. See [item audit](STRONGREJECT_AUDIT.md) and
-[20-row mapping](STRONGREJECT_PROVENANCE.csv). The original StrongREJECT README
-explicitly grants MIT for custom generated data; DAN and AdvBench also have MIT
-evidence. MasterKey's externally hosted dataset terms remain unresolved; the movie
-base counterpart is custom/MIT, though historical edits are unverified. Reconstruction does not certify
-historical lineage or rights for IRIS-added contexts/translations. No rows are
-removed, and no blanket MIT metadata is assigned.
+## StrongREJECT reconstruction
 
-Before public upload, record upstream repository/dataset revisions, original
-item identifiers, license URLs/full required notices, modifications (translation,
-redaction, rewriting), and a component-specific decision. Confirm rights for
-IRIS-authored additions and aggregates. Preserve license texts/copyright notices
-in the final release for every approved component. No upstream license texts
-are silently replaced by IRIS's MIT software license.
+[STRONGREJECT_PROVENANCE.csv](STRONGREJECT_PROVENANCE.csv) and
+[STRONGREJECT_AUDIT.md](STRONGREJECT_AUDIT.md) document the 20 source
+correspondences. Twelve are custom, five DAN, two AdvBench and one MasterKey.
+Nineteen base counterparts have MIT evidence; the selected MasterKey question
+has direct CC BY 4.0 evidence in the author-written article appendix. This is
+not a grant for the entire external MasterKey dataset.
 
-A private review bundle is not permission to publish. If full clearance cannot
-be completed, a narrower release may contain only cleared aggregates or cleared
-input subsets, with accurate row counts and coverage limits; do not advertise
-that subset as the full 105-behavior panel. Gating access is not a substitute for
-redistribution permission. Linking HF Papers to the existing GitHub archive can
-proceed separately from dataset migration.
+Four matches are exact, 15 are strong textual reconstructions, and the
+paid-movie counterpart is semantic with historical edits unverified.
+Construction history was not retained. Public-source reconstruction must not
+be described as original construction records. No source texts are removed.
 
-## MasterKey resolution for the selected item (2026-10-13)
+## Changes and required notices
 
-employee_computer_monitoring's base question is included in the author-written
-Privacy example in arXiv:2307.08715v2 Appendix A. The article is CC BY 4.0;
-no item-specific third-party exclusion is indicated there. This supplies a
-direct reuse basis for that published question, not a blanket license for the
-external MasterKey dataset. Preserve Deng et al. attribution, article/version
-and CC BY 4.0 links, and indicate IRIS rephrasing and translation. See the latest
-section of STRONGREJECT_AUDIT.md; earlier unresolved statements are superseded
-for this specific base question. This component must not be tagged as MIT.
+IRIS performs selection, redaction, rewriting, translation and reformulation.
+Keep supplied copyright, license and disclaimer notices for imported material.
+For the MasterKey-derived component retain authors, article/version and license
+links, and indicate these changes. Do not impose restrictions incompatible with
+the upstream grant or imply endorsement.
+
+Before upload, include the applicable full MIT license notices in the final
+bundle, complete remaining selected-item/context checks, check generated-asset
+terms and review multilingual strings/identifiers. A software license, a
+citation or a successful loading test does not complete those checks.
+No manuscript/figure assets, raw answers, raw judge records, item-level human
+labels or other unpublished materials are part of the converted bundle.

@@ -5,6 +5,9 @@ language:
 - eo
 - zu
 - yo
+license: other
+license_name: iris-component-licenses
+license_link: LICENSE_DATA.md
 pretty_name: IRIS public redacted inputs and aggregate results
 size_categories:
 - n<1K
@@ -53,10 +56,15 @@ configs:
 Data accompanying [Same Outcome, Different Evidence: Intent Recovery in LLM Safety Evaluation](https://arxiv.org/abs/2610.11766), by Haitong Jiang, Chunlin Liu, Sihan Tang, Chan Wu, Xiaoqing Su and Yuhong Feng.
 [Code and original public archive](https://github.com/kevinjiang0121-cyber/IRIS).
 
-**Publication hold:** no dataset-wide license has been established. The missing
-license metadata is deliberate, not a grant of rights. See SOURCE_LICENSES.md.
-Do not upload this draft until the component rights and text review are resolved.
-The MIT license for the software does not cover these data automatically.
+## License
+
+IRIS-authored data contributions are released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Third-party materials retain their original licenses and required notices.
+See [LICENSE_DATA.md](LICENSE_DATA.md) for scope and
+[SOURCE_LICENSES.md](SOURCE_LICENSES.md) for component attribution.
+
+Planned Hub repository: `ArthurTThomas/IRIS`. This is a review draft;
+remaining upstream and manual text checks must be completed before upload.
 
 ## Scope and construction
 

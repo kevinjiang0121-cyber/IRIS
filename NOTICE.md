@@ -10,3 +10,8 @@ Hugging Face conversion outputs are review drafts, not a new data license.
 See `docs/huggingface/SOURCE_LICENSES.md` for source-specific evidence and unresolved
 inherited rights. No unpublished answers, judge records or human labels are
 authorized for release by the conversion tooling.
+
+IRIS-authored data contributions are licensed under CC BY 4.0 as described in
+`docs/huggingface/LICENSE_DATA.md`; third-party materials retain their terms.
+This scoped data grant does not expand the public archive or relicense its
+imported benchmark material. The root MIT license continues to cover software.
