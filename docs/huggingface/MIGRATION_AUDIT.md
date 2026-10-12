@@ -82,3 +82,10 @@ All eight configs loaded using datasets 5.1.0;
 source text and numeric round trips passed. Two independent conversions were
 byte-identical; tampered ZIP and existing output rejection passed. Live Hub
 Viewer and remote loading were not tested because no dataset was uploaded.
+
+## Subsequent item-level audit (2026-10-12)
+
+See STRONGREJECT_AUDIT.md and STRONGREJECT_PROVENANCE.csv: 19 strong
+correspondences, plus one uncertain candidate. MIT evidence was found for 18
+strongly corresponding base prompts; two items need further provenance/terms
+work. Preserve all inputs pending investigation. No exclusion was committed.
