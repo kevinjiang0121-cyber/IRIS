@@ -115,7 +115,7 @@ def convert(archive, out):
         schemas[name] = {k: type(v).__name__ for k, v in rows[0].items()}
     card = Path(__file__).resolve().parents[1] / 'docs/huggingface/DATASET_CARD.md'
     (out / 'README.md').write_bytes(card.read_bytes())
-    for name in ['SOURCE_LICENSES.md', 'LICENSE_DATA.md', 'STRONGREJECT_AUDIT.md', 'STRONGREJECT_PROVENANCE.csv']:
+    for name in ['LICENSE_DATA.md', 'STRONGREJECT_PROVENANCE.csv']:
         (out / name).write_bytes(card.with_name(name).read_bytes())
     report = {'archive_sha256': ZIP_SHA, 'release_status': 'DRAFT_NOT_AUTHORIZED_FOR_UPLOAD',
               'source_counts': sources, 'row_counts': {n: len(r) for n, r in tables.items()},

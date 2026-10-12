@@ -174,10 +174,8 @@ the software license does not override data/resource terms. Software copyright n
 
 Translation generators default to all 105 matched behavior IDs and write new caches to `outputs/assets/`; included frozen caches are left intact.
 
-## Hugging Face migration review
+## Hugging Face data preparation
 
-A local, non-publishing conversion of the existing redacted ZIP is available in
-`scripts/prepare_hf_dataset.py`. See [audit and release plan](docs/huggingface/MIGRATION_AUDIT.md),
-[Dataset Card draft](docs/huggingface/DATASET_CARD.md), and
-[source terms](docs/huggingface/SOURCE_LICENSES.md). Dataset redistribution is
-pending component-specific rights and manual text review; root MIT is software-only.
+See the [Dataset Card](docs/huggingface/DATASET_CARD.md) for local conversion,
+loading, scope and limitations, and [data license](docs/huggingface/LICENSE_DATA.md)
+for component terms. The Hub dataset is not yet published.
