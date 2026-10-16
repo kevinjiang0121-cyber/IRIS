@@ -173,3 +173,9 @@ implementations include ArtPrompt and Logic Jailbreak. Preserve upstream notices
 the software license does not override data/resource terms. Software copyright notices are provided in LICENSE. `MANIFEST.json` lists file sizes and hashes.
 
 Translation generators default to all 105 matched behavior IDs and write new caches to `outputs/assets/`; included frozen caches are left intact.
+
+## Hugging Face data preparation
+
+See the [Dataset Card](docs/huggingface/DATASET_CARD.md) for local conversion,
+loading, scope and limitations, and [data license](docs/huggingface/LICENSE_DATA.md)
+for component terms. The Hub dataset is not yet published.
