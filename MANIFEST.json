@@ -304,8 +304,8 @@
     "sha256": "955e8f0544b7dcb3bbfb7ff9b9b1103c15d8f879c50c9f3f9487dc2dab35418e"
   },
   "NOTICE.md": {
-    "bytes": 892,
-    "sha256": "1ef954cea4f59e52d67d50cf10375635feade12b06f7eefaf6ff9ce39529ac2c"
+    "bytes": 1130,
+    "sha256": "46c0753997e31996120715628052ccc9ebee534fdcc05f09b7897834cb2445bd"
   },
   "paper/acl.sty": {
     "bytes": 11927,
@@ -396,8 +396,8 @@
     "sha256": "fb366c4d45f195e42aff58cf2ebf48076fa77578e276d6bd12faec2b50d1db60"
   },
   "README.md": {
-    "bytes": 10334,
-    "sha256": "0dfb4e3731897b2e76025ec8766e9ef19be8e143808d0083f18cccb19323f780"
+    "bytes": 10593,
+    "sha256": "8374237abb0bad7a2330e685e7180ed8923f3f4d9b529a506ab3f02935a01c88"
   },
   "requirements.txt": {
     "bytes": 379,
@@ -430,5 +430,25 @@
   "scripts/generate_low_resource_translations.py": {
     "bytes": 5832,
     "sha256": "98261a690d76c13638f152fac682a3e7517fd0516f350cde1c973e29db313664"
+  },
+  "docs/huggingface/DATASET_CARD.md": {
+    "bytes": 5048,
+    "sha256": "12764077c76654375fcc77c19a43fa7d516424f942ceafcd2b1f394a7a3f60b0"
+  },
+  "docs/huggingface/LICENSE_DATA.md": {
+    "bytes": 5375,
+    "sha256": "3b3a250dbafe653463fa43e5f799ad7d5a62968855ddc61a69560cdc254ccbbd"
+  },
+  "docs/huggingface/STRONGREJECT_PROVENANCE.csv": {
+    "bytes": 4486,
+    "sha256": "ed29fa48de26c19b55ebf997fec0bf62a27595962bc07f799c2d00673130ab59"
+  },
+  "scripts/check_hf_dataset.py": {
+    "bytes": 2813,
+    "sha256": "9cfa9188b04cb5fd49310a771707e14bc263e30f139fb82ffda9c45ac58e1a7e"
+  },
+  "scripts/prepare_hf_dataset.py": {
+    "bytes": 9922,
+    "sha256": "2c43843e5a9eec50a18e8aa1c6b8f94e3ef19ef8ff916bbd26e2385e33ece7ab"
   }
 }

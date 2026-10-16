@@ -21,6 +21,27 @@ BEHAVIOR_FIELDS = ['BehaviorID', 'FunctionalCategory', 'SemanticCategory', 'Tags
                    'Behavior_EN', 'ContextString_EN', 'Behavior_EO', 'ContextString_EO',
                    'Behavior_TK', 'ContextString_TK']
 
+# Only these two public benchmark profiles receive additional export redaction.
+# Keep stable IDs for joins; do not claim that the upstream personas are real or fictional.
+PROFILE_REDACTIONS = {
+    'maria_racist_insult': [
+        ('MariaAlejandro', '[PERSON_C]'), ('Maria Alejandro', '[PERSON_C]'),
+        ('Malia Alejanlo', '[PERSON_C]'), ('Maria', '[PERSON_C]'), ('Malia', '[PERSON_C]'),
+        ('San Francisco', '[CITY_C]'), ('San-Francisko', '[CITY_C]'), ('San Pansiko', '[CITY_C]'),
+        ('Texas', '[PET_C1]'), ('Teksaso', '[PET_C1]'), ('Tekisa', '[PET_C1]'), ('Tango', '[PET_C2]')],
+    'jacob_bully_message': [
+        ('JacobThompson', '[PERSON_D]'), ('Jacob Thompson', '[PERSON_D]'),
+        ('Jekop Tanpson', '[PERSON_D]'), ('Jacob', '[PERSON_D]'), ('Jekop', '[PERSON_D]'),
+        ('Burlington', '[CITY_D]'), ('Pelinton', '[CITY_D]'),
+        ('Vermont', '[REGION_D]'), ('Vermonto', '[REGION_D]'), ('Wemon', '[REGION_D]'),
+        ('Max', '[PET_D]'), ('Makisi', '[PET_D]')]
+}
+
+def export_text(behavior_id, text):
+    for old, new in sorted(PROFILE_REDACTIONS.get(behavior_id, []), key=lambda x: -len(x[0])):
+        text = text.replace(old, new)
+    return text
+
 def require(ok, message):
     if not ok:
         raise ValueError(message)
@@ -53,6 +74,15 @@ def convert(archive, out):
         require(set(ids) == set(z.read(BASE + 'data/splits/behavior_ids_full105.txt').decode().splitlines()), 'Split mismatch')
         sources = dict(collections.Counter(r['Source'] for r in behaviors))
         require(sources == {'HarmBench': 33, 'JailbreakBench': 52, 'StrongReject/rewrite': 20}, 'Sources changed')
+        redactions = []
+        for row in behaviors:
+            for field, value in row.items():
+                if field == 'BehaviorID':
+                    continue
+                value_out = export_text(row['BehaviorID'], value)
+                if value_out != value:
+                    redactions.append({'BehaviorID': row['BehaviorID'], 'field': field})
+                row[field] = value_out
         tables['behaviors'] = behaviors
         assets = []
         for variant, path in [('FormalLogic', 'data/full105/formal_logic_translations_merged.json'),
@@ -63,7 +93,10 @@ def convert(archive, out):
             require(all(isinstance(v, str) and v for v in values.values()), 'Invalid asset text')
             provenance[path] = manifest[path]
             for bid in ids:
-                assets.append({'BehaviorID': bid, 'variant': variant, 'text': values[bid],
+                value_out = export_text(bid, values[bid])
+                if value_out != values[bid]:
+                    redactions.append({'BehaviorID': bid, 'variant': variant, 'field': 'text'})
+                assets.append({'BehaviorID': bid, 'variant': variant, 'text': value_out,
                                'source_file': path, 'license_status': 'pending_component_review'})
         tables['supplementary_inputs'] = assets
         for name, count in COUNTS.items():
@@ -118,7 +151,7 @@ def convert(archive, out):
     for name in ['LICENSE_DATA.md', 'STRONGREJECT_PROVENANCE.csv']:
         (out / name).write_bytes(card.with_name(name).read_bytes())
     report = {'archive_sha256': ZIP_SHA, 'release_status': 'DRAFT_NOT_AUTHORIZED_FOR_UPLOAD',
-              'source_counts': sources, 'row_counts': {n: len(r) for n, r in tables.items()},
+              'source_counts': sources, 'export_redactions': redactions, 'row_counts': {n: len(r) for n, r in tables.items()},
               'schemas': schemas, 'source_files': provenance, 'sensitive_scan_findings': findings,
               'manual_review_required': ['Names embedded in BehaviorID (e.g. maria, Evan)',
                   'All text fields including multilingual text and contextual identifiers',

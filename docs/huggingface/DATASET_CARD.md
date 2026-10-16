@@ -48,7 +48,8 @@ Public redacted inputs and aggregate results for
 [Code](https://github.com/kevinjiang0121-cyber/IRIS). Planned dataset: `ArthurTThomas/IRIS`.
 
 IRIS-authored data contributions use CC BY 4.0; upstream materials retain their
-terms. See [LICENSE_DATA.md](LICENSE_DATA.md). This is a local review draft,
+terms, including CC BY-SA for Wikipedia-derived contexts and their translations.
+See [LICENSE_DATA.md](LICENSE_DATA.md). This is a local review draft,
 not a published Hub dataset.
 
 ## Data
@@ -105,8 +106,11 @@ No GPU or paid API calls are made. Output hashes and schemas are recorded in
 
 ## Scope and limitations
 
-The inputs contain harmful evaluation requests. The ZIP is redacted, but
-residual name-like IDs and multilingual identifiers require final review.
+The inputs contain harmful evaluation requests. The source ZIP is redacted; conversion additionally pseudonymizes names,
+locations and pet names in two HarmBench profile rows and their supplementary
+texts. Stable name-like IDs, ages and task descriptors remain. Real/fictional
+status is unverified; no complete-anonymity claim is made. The report lists
+changed fields, and original source bytes remain available in the existing ZIP.
 The archive contains earlier inputs and current aggregates; redacted assets
 are not guaranteed byte-exact historical executed prompts. T1/T2/T3 texts,
 raw answers, raw judge records and item-level human labels are not included.
