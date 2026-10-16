@@ -432,23 +432,23 @@
     "sha256": "98261a690d76c13638f152fac682a3e7517fd0516f350cde1c973e29db313664"
   },
   "docs/huggingface/DATASET_CARD.md": {
-    "bytes": 5048,
-    "sha256": "12764077c76654375fcc77c19a43fa7d516424f942ceafcd2b1f394a7a3f60b0"
+    "bytes": 5566,
+    "sha256": "2912f003e92e322f948d152839919fe7bf2e08b8b05eadcd7fc53fb7ec0b2869"
   },
   "docs/huggingface/LICENSE_DATA.md": {
-    "bytes": 5375,
-    "sha256": "3b3a250dbafe653463fa43e5f799ad7d5a62968855ddc61a69560cdc254ccbbd"
-  },
-  "docs/huggingface/STRONGREJECT_PROVENANCE.csv": {
-    "bytes": 4486,
-    "sha256": "ed29fa48de26c19b55ebf997fec0bf62a27595962bc07f799c2d00673130ab59"
+    "bytes": 5531,
+    "sha256": "16d24aec540a85417fbb3c13cc12d0d1a589de907d9136346cd10f57aa5fd955"
   },
   "scripts/check_hf_dataset.py": {
-    "bytes": 2813,
-    "sha256": "9cfa9188b04cb5fd49310a771707e14bc263e30f139fb82ffda9c45ac58e1a7e"
+    "bytes": 3749,
+    "sha256": "319976ac0dd80f5dab4fff32a1deb0b04ce3bd3ef401301896da82d1fe4c13db"
   },
   "scripts/prepare_hf_dataset.py": {
-    "bytes": 9922,
-    "sha256": "2c43843e5a9eec50a18e8aa1c6b8f94e3ef19ef8ff916bbd26e2385e33ece7ab"
+    "bytes": 9935,
+    "sha256": "f25d0136e694473fa77ab9664ec7ab3ffb6ccaaa2a0971f3ef2cda1cf82fdf37"
+  },
+  "docs/huggingface/SOURCE_PROVENANCE.csv": {
+    "bytes": 35064,
+    "sha256": "732500ee5f96dfce80963fff08af7e1c275692077a02ec0800c0897bf84f0fdf"
   }
 }

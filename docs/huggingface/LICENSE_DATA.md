@@ -41,11 +41,9 @@ described as author-created. Via StrongREJECT record 167, IRIS changes its
 framing and supplies translations/reformulations. Retain paper/version and
 license links and this modification notice. This does not license the complete
 external MasterKey dataset. StrongREJECT mappings are in
-STRONGREJECT_PROVENANCE.csv; original construction history was not retained.
+SOURCE_PROVENANCE.csv; original construction history was not retained.
 
 Retain the upstream copyright, permission and disclaimer notices below.
-The author grant does not certify third-party contextual rights or
-generated-asset service terms; their final checks remain pending.
 
 ## MIT permission and disclaimer
 
@@ -83,12 +81,20 @@ are the modifications; the original imported revision was not recorded.
 This component-specific ShareAlike notice does not assign BY-SA to unrelated
 records or aggregate tables. See [Wikipedia reuse conditions](https://en.wikipedia.org/wiki/Wikipedia:Copyrights#Re-use_of_text).
 
-## Additional export redaction
+## Export changes
 
-The two public HarmBench profiles maria_racist_insult and jacob_bully_message
-are not independently verified as real or fictional. HF conversion replaces
-names, locations and pet names with consistent placeholders in their input
-and supplementary text fields, including translated name variants. Stable
-BehaviorID values are retained for joins; ages and task-relevant descriptors
-are retained. This is pseudonymization, not a guarantee of full anonymity.
-The source ZIP remains unchanged. conversion_report.json lists affected fields.
+Conversion replaces names, locations and pet names in maria_racist_insult and
+jacob_bully_message and their supplementary texts. IDs, ages and task descriptors
+remain; this is pseudonymization. The source ZIP is unchanged. Changed fields
+are listed in conversion_report.json.
+
+## Supplementary inputs
+
+Public code uses Google Translate for Zulu/Yoruba and GPT-4o for FormalLogic;
+notes report 96 model reformulations and nine manual backfills. Historical
+requests and service agreements are unavailable. Current
+[OpenAI](https://openai.com/policies/services-agreement/),
+[Google](https://policies.google.com/terms) and
+[OpenRouter](https://openrouter.ai/terms) terms provide context, but do not
+establish which terms applied to those earlier calls. The grant above covers
+only contributor-held rights and preserves underlying source licenses.
