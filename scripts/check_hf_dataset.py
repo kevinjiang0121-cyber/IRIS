@@ -18,7 +18,7 @@ require(report['archive_sha256'] == ZIP_SHA, 'Wrong source revision')
 for name, sha in report['outputs'].items():
     require(hashlib.sha256((bundle / name).read_bytes()).hexdigest() == sha, 'Output mutated: ' + name)
 meta = yaml.safe_load((bundle / 'README.md').read_text().split('---', 2)[1])
-require(meta.get('license') == 'other' and meta.get('license_link') == 'LICENSE_DATA.md',
+require(meta.get('license') == 'other' and meta.get('license_link') == 'https://huggingface.co/datasets/ArthurTThomas/IRIS/blob/main/LICENSE_DATA.md',
         'Mixed component licenses must be stated accurately')
 expected_files = {'README.md', 'LICENSE_DATA.md', 'SOURCE_PROVENANCE.csv', 'conversion_report.json'} | {
     spec['path'] for c in meta['configs'] for spec in c['data_files']}

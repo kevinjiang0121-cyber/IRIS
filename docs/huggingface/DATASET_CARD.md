@@ -2,7 +2,7 @@
 language: [en, tok, eo, zu, yo]
 license: other
 license_name: iris-component-licenses
-license_link: LICENSE_DATA.md
+license_link: https://huggingface.co/datasets/ArthurTThomas/IRIS/blob/main/LICENSE_DATA.md
 pretty_name: IRIS
 tags: [arxiv:2610.11766, llm-safety, intent-recovery]
 configs:
