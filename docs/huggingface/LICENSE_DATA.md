@@ -10,6 +10,9 @@ and indicate changes.
 CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
 Legal text: https://creativecommons.org/licenses/by/4.0/legalcode.en
 
+Wikipedia-derived contexts and their translated adaptations retain CC BY-SA
+terms as specified below; they are excluded from the CC BY-only grant.
+
 Imported materials retain their original terms; this grant does not relicense
 them. Software is separately licensed under the root MIT LICENSE.
 
@@ -20,6 +23,7 @@ them. Software is separately licensed under the root MIT LICENSE.
 | StrongREJECT custom inputs | Explicit MIT grant for custom generated data; copyright 2024 Center for Human-Compatible AI |
 | DAN | MIT; copyright 2023 Vera |
 | AdvBench (Zou et al. 2023) | MIT; copyright 2023 Andy Zou |
+| Wikipedia context and translations | CC BY-SA 4.0; Wikipedia contributors, Race (human categorization), via HarmBench; see below |
 | Selected MasterKey question | CC BY 4.0; Gelei Deng et al., arXiv:2307.08715v2, Appendix A, Privacy example |
 
 Source evidence:
@@ -65,3 +69,26 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Wikipedia context
+
+For wikipedia_race_superiority_edit, ContextString_EN reproduces an excerpt of
+Wikipedia contributors' [Race (human categorization)](https://en.wikipedia.org/wiki/Race_(human_categorization)).
+ContextString_EO and ContextString_TK are IRIS translations/adaptations of that
+excerpt. These contextual texts and the IRIS contributions to their adaptations
+are distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/),
+not the software MIT license or the CC BY-only grant above. The source page and
+its history provide author attribution. Selection/excerpting and translation
+are the modifications; the original imported revision was not recorded.
+This component-specific ShareAlike notice does not assign BY-SA to unrelated
+records or aggregate tables. See [Wikipedia reuse conditions](https://en.wikipedia.org/wiki/Wikipedia:Copyrights#Re-use_of_text).
+
+## Additional export redaction
+
+The two public HarmBench profiles maria_racist_insult and jacob_bully_message
+are not independently verified as real or fictional. HF conversion replaces
+names, locations and pet names with consistent placeholders in their input
+and supplementary text fields, including translated name variants. Stable
+BehaviorID values are retained for joins; ages and task-relevant descriptors
+are retained. This is pseudonymization, not a guarantee of full anonymity.
+The source ZIP remains unchanged. conversion_report.json lists affected fields.
