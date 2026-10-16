@@ -97,7 +97,7 @@ def convert(archive, out):
                 if value_out != values[bid]:
                     redactions.append({'BehaviorID': bid, 'variant': variant, 'field': 'text'})
                 assets.append({'BehaviorID': bid, 'variant': variant, 'text': value_out,
-                               'source_file': path, 'license_status': 'pending_component_review'})
+                               'source_file': path, 'license_status': 'component_terms_in_LICENSE_DATA.md'})
         tables['supplementary_inputs'] = assets
         for name, count in COUNTS.items():
             _, rows = read_csv('results/current_submission/' + name + '.csv')
@@ -148,14 +148,14 @@ def convert(archive, out):
         schemas[name] = {k: type(v).__name__ for k, v in rows[0].items()}
     card = Path(__file__).resolve().parents[1] / 'docs/huggingface/DATASET_CARD.md'
     (out / 'README.md').write_bytes(card.read_bytes())
-    for name in ['LICENSE_DATA.md', 'STRONGREJECT_PROVENANCE.csv']:
+    for name in ['LICENSE_DATA.md', 'SOURCE_PROVENANCE.csv']:
         (out / name).write_bytes(card.with_name(name).read_bytes())
-    report = {'archive_sha256': ZIP_SHA, 'release_status': 'DRAFT_NOT_AUTHORIZED_FOR_UPLOAD',
+    report = {'archive_sha256': ZIP_SHA, 'release_status': 'PREPARED_NOT_UPLOADED',
               'source_counts': sources, 'export_redactions': redactions, 'row_counts': {n: len(r) for n, r in tables.items()},
               'schemas': schemas, 'source_files': provenance, 'sensitive_scan_findings': findings,
-              'manual_review_required': ['Names embedded in BehaviorID (e.g. maria, Evan)',
-                  'All text fields including multilingual text and contextual identifiers',
-                  'Per-item upstream provenance and IRIS translation/aggregate rights'],
+              'provenance_limitations': ['Reconstructed source matches are not original construction history',
+                  'Eight JailbreakBench-labeled rows have no confirmed upstream record mapping',
+                  'Historical generation-time provider contracts are unavailable'],
               'outputs': {p.relative_to(out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                           for p in sorted(out.rglob('*')) if p.is_file()}}
     (out / 'conversion_report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')

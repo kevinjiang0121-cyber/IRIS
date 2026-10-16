@@ -49,8 +49,7 @@ Public redacted inputs and aggregate results for
 
 IRIS-authored data contributions use CC BY 4.0; upstream materials retain their
 terms, including CC BY-SA for Wikipedia-derived contexts and their translations.
-See [LICENSE_DATA.md](LICENSE_DATA.md). This is a local review draft,
-not a published Hub dataset.
+See [LICENSE_DATA.md](LICENSE_DATA.md). Prepared for upload to the Hub; no dataset upload is performed by these scripts.
 
 ## Data
 
@@ -69,7 +68,7 @@ Behavior fields retain source names: `BehaviorID` is the join key;
 `Source`, `FunctionalCategory`, `SemanticCategory`, `Tags` are metadata;
 `Behavior_EN/EO/TK` and `ContextString_EN/EO/TK` are strings. Empty strings
 are retained. Supplementary fields are `BehaviorID`, `variant`, `text`,
-`source_file` and `license_status` (review status, not a license grant).
+`source_file` and `license_status` (points to the component terms, not a new license grant).
 
 Current result rates and endpoints are **percentages**, with `n=105` in
 count tables. Operative UR = P(IR=2 and IS=NA), recognition = P(IR=2), and
@@ -106,21 +105,36 @@ No GPU or paid API calls are made. Output hashes and schemas are recorded in
 
 ## Scope and limitations
 
-The inputs contain harmful evaluation requests. The source ZIP is redacted; conversion additionally pseudonymizes names,
-locations and pet names in two HarmBench profile rows and their supplementary
-texts. Stable name-like IDs, ages and task descriptors remain. Real/fictional
-status is unverified; no complete-anonymity claim is made. The report lists
-changed fields, and original source bytes remain available in the existing ZIP.
-The archive contains earlier inputs and current aggregates; redacted assets
-are not guaranteed byte-exact historical executed prompts. T1/T2/T3 texts,
-raw answers, raw judge records and item-level human labels are not included.
-Historical human statistics cannot be independently recomputed from this
-bundle; fresh API runs are subject to provider drift.
-Upstream contextual material and generated-asset terms still require final
-checks before upload. No additional private material is released.
+The inputs contain harmful evaluation requests. Conversion pseudonymizes names,
+locations and pet names in two public HarmBench profiles; stable IDs, ages and
+task descriptors remain. The source ZIP is unchanged, and changed fields are
+listed in `conversion_report.json`.
 
-Cite the IRIS paper and relevant source benchmarks. Sources comprise
-33 HarmBench, 52 JailbreakBench and 20 StrongReject/rewrite behaviors.
-[STRONGREJECT_PROVENANCE.csv](STRONGREJECT_PROVENANCE.csv) records reconstructed
-item correspondences; the paid-movie match is semantic and historical edits
-remain unverified.
+This bundle contains public inputs and aggregate results. It excludes T1/T2/T3
+texts, raw answers, judge records and item-level human labels, so historical
+human statistics cannot be recomputed from it. Fresh API runs may differ.
+
+Sources comprise 33 HarmBench, 52 JailbreakBench and 20 StrongReject/rewrite
+behaviors. [SOURCE_PROVENANCE.csv](SOURCE_PROVENANCE.csv) records the available
+matches; some are reconstructed, and eight JailbreakBench-labeled rewrites
+have no confirmed item mapping. See [LICENSE_DATA.md](LICENSE_DATA.md) for
+component licenses and attribution. Cite IRIS and the relevant benchmarks.
+
+## Upload and verify
+
+The output directory is the complete upload unit (12 files). Do not upload the
+source ZIP, code repository or earlier review bundles. From your own machine:
+
+```bash
+pip install datasets PyYAML huggingface_hub
+python scripts/prepare_hf_dataset.py --output /tmp/iris-hf-upload
+python scripts/check_hf_dataset.py /tmp/iris-hf-upload
+hf auth login
+hf upload ArthurTThomas/IRIS /tmp/iris-hf-upload . --repo-type dataset --commit-message "Release IRIS public inputs and aggregate results"
+```
+
+The last command publishes the prepared files. Authentication stays on your
+machine; do not paste tokens into chat. After upload, rerun the example above
+and inspect all eight configs in the Viewer. Link the dataset to the paper via
+the arXiv tag already present in this card. No live Viewer check is claimed
+before upload.
