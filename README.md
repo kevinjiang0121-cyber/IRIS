@@ -9,8 +9,6 @@ Corresponding author: Yuhong Feng (yuhongf@szu.edu.cn).
 
 IRIS reports operative task recovery (UR) alongside attack success rate (ASR) to study how similar outcomes can reflect different levels of task engagement. The evaluation uses 105 matched behaviors and six target models across language, encoding, and reconstruction conditions.
 
-- [Paper PDF](paper/IRIS.pdf)
-- [Paper source](paper/IRIS.tex)
 - [Data package](artifacts/data.zip): redacted inputs and aggregate results
 - [Experiment conditions](configs/experiments.json)
 

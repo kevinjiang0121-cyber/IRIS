@@ -8,3 +8,7 @@ outputs/
 *.fls
 *.fdb_latexmk
 *.blg
+
+# Manuscript artifacts are maintained separately from this code/data release.
+/paper/
+/artifacts/IRIS_arxiv_source.zip
