@@ -7,6 +7,22 @@
     "bytes": 211,
     "sha256": "69feb8d56ffee1da96b23befbb02ae84feef25fbd0d376b2329f034d3e7270d3"
   },
+  "CITATION.cff": {
+    "bytes": 565,
+    "sha256": "1c1bfe3bb73588f77b1958d0e43dead0452e7a579ec9f2f11cd1e531e923f660"
+  },
+  "LICENSE": {
+    "bytes": 1134,
+    "sha256": "b8a9df37f430e274534f5a43575cc9e67f29781f892084f8fd9012159fa6e9ae"
+  },
+  "NOTICE.md": {
+    "bytes": 673,
+    "sha256": "b251aa9cd99e7631603fa51199d440da9d303a2adb091d382517cf8119270727"
+  },
+  "README.md": {
+    "bytes": 10528,
+    "sha256": "6290c7421e1163c3118595aeef35142d8b19893448ae137273ede49a83ca6319"
+  },
   "analyze.py": {
     "bytes": 4222,
     "sha256": "1b09e9788f3c26dab92c916ae1d6c38812d936df8612db48c5423b99b0b014f1"
@@ -127,10 +143,6 @@
     "bytes": 2390,
     "sha256": "0dea565931108ea773a800acc065f4b17fb613cc2f7726932c37ce507e11b65e"
   },
-  "CITATION.cff": {
-    "bytes": 565,
-    "sha256": "1c1bfe3bb73588f77b1958d0e43dead0452e7a579ec9f2f11cd1e531e923f660"
-  },
   "configs/experiments.json": {
     "bytes": 2090,
     "sha256": "d0efcb9eff07196a2ed3a4059efb0cacf4f2ce9a8e24cf173f2419ccfcc4a44f"
@@ -167,11 +179,11 @@
     "bytes": 406,
     "sha256": "2eed913336e2ed95df75f5e4280449b80da67fffe74c631d7a6f89d0ed7cf20d"
   },
-  "configs/method_configs/HumanJailbreaks_config.yaml": {
+  "configs/method_configs/HumanJailbreaksToki_config.yaml": {
     "bytes": 186,
     "sha256": "f1ea035fdeb13904ae46fad954b0bb1ba9c5f523aeb0490cad5d38f57d5a6cca"
   },
-  "configs/method_configs/HumanJailbreaksToki_config.yaml": {
+  "configs/method_configs/HumanJailbreaks_config.yaml": {
     "bytes": 186,
     "sha256": "f1ea035fdeb13904ae46fad954b0bb1ba9c5f523aeb0490cad5d38f57d5a6cca"
   },
@@ -275,6 +287,18 @@
     "bytes": 14580,
     "sha256": "b73c032caa7da7cc7c65655cdbbd6de5aad7570759413b233ce801f469ff0cbc"
   },
+  "docs/huggingface/DATASET_CARD.md": {
+    "bytes": 5627,
+    "sha256": "68c43b994b568e9cafc2d8209147b59fee689a20b414c78e973ffcf01b62fe0e"
+  },
+  "docs/huggingface/LICENSE_DATA.md": {
+    "bytes": 5531,
+    "sha256": "16d24aec540a85417fbb3c13cc12d0d1a589de907d9136346cd10f57aa5fd955"
+  },
+  "docs/huggingface/SOURCE_PROVENANCE.csv": {
+    "bytes": 35064,
+    "sha256": "732500ee5f96dfce80963fff08af7e1c275692077a02ec0800c0897bf84f0fdf"
+  },
   "eval_utils.py": {
     "bytes": 13571,
     "sha256": "2235ce9e4bf880ecdceb3994f6c440f0a760622f8766519a535618b4de2efec4"
@@ -291,21 +315,9 @@
     "bytes": 10420,
     "sha256": "e92f25255a99fb27dbf0e5445827cc439da4c1f3b3fc844604653e408a64eb45"
   },
-  "LICENSE": {
-    "bytes": 1134,
-    "sha256": "b8a9df37f430e274534f5a43575cc9e67f29781f892084f8fd9012159fa6e9ae"
-  },
   "merge_test_cases.py": {
     "bytes": 877,
     "sha256": "955e8f0544b7dcb3bbfb7ff9b9b1103c15d8f879c50c9f3f9487dc2dab35418e"
-  },
-  "NOTICE.md": {
-    "bytes": 433,
-    "sha256": "5fd0982b284cc2962f966495c4d341e342a08bbda253c064b396827ce0e3cb74"
-  },
-  "README.md": {
-    "bytes": 10269,
-    "sha256": "2841e6842de04e1ceea5a377f41825483d9af37d96b50025ea31c09ebde93e4a"
   },
   "requirements.txt": {
     "bytes": 379,
@@ -331,6 +343,10 @@
     "bytes": 6312,
     "sha256": "ca007b0558a5ca0b044e31d7fed1bd319ec1d4ef36562f7dd46dbaadcd415ca6"
   },
+  "scripts/check_hf_dataset.py": {
+    "bytes": 3810,
+    "sha256": "75489d5aec113f5df396eb63f7ef115b2ae1bc4e0346b6fe6c4aadb1923acdef"
+  },
   "scripts/generate_formal_logic_translations.py": {
     "bytes": 8366,
     "sha256": "3fe60bcc116cce147dee9119f0a090162e3c691ab586546c330305eef43a227a"
@@ -338,5 +354,9 @@
   "scripts/generate_low_resource_translations.py": {
     "bytes": 5832,
     "sha256": "98261a690d76c13638f152fac682a3e7517fd0516f350cde1c973e29db313664"
+  },
+  "scripts/prepare_hf_dataset.py": {
+    "bytes": 9935,
+    "sha256": "f25d0136e694473fa77ab9664ec7ab3ffb6ccaaa2a0971f3ef2cda1cf82fdf37"
   }
 }
